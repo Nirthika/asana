@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~   WSO2 Inc. licenses this file to you under the Apache License,
+  ~   Version 2.0 (the "License"); you may not use this file except
+  ~   in compliance with the License.
+  ~   You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing,
+  ~  software distributed under the License is distributed on an
+  ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  KIND, either express or implied.  See the License for the
+  ~  specific language governing permissions and limitations
+  ~  under the License.
+-->
+<template xmlns="http://ws.apache.org/ns/synapse" name="updateATask">
+	<parameter name="taskId" description="Task id to be retrieved."/>
+    <parameter name="assignee" description="The id of the person who have been assigned to the task" />
+	<parameter name="notes" description="a String containing the description about the task" />
+    <parameter name="name" description="a String containing the name of the task" />
+   <sequence>
+      
+
+      <property name="uri.var.taskId" expression="$func:taskId"/>
+	  <property name="uri.var.assignee" expression="$func:assignee" /> 
+	  <property name="uri.var.notes" expression="$func:notes" /> 
+	  <property name="uri.var.name" expression="$func:name" /> 
+	  <payloadFactory media-type="json">
+            <format>
+                {
+                    "data":{
+                    }
+                }
+
+
+            </format>
+        </payloadFactory>
+	  <script language="js">
+		<![CDATA[     
+		 
+		  var assignee = mc.getProperty('uri.var.assignee');
+		  var notes = mc.getProperty('uri.var.notes');
+		  var name = mc.getProperty('uri.var.name');
+		  
+		  var payload = mc.getPayloadJSON();   
+		  
+		if (assignee != null && assignee != "") {
+		payload.data.assignee = assignee;
+		} 
+		if (notes != null && notes != "") {
+		payload.data.notes = notes;
+		} 
+		if (name != null && name != "") {
+		payload.data.name = name;
+		} 
+         mc.setPayloadJSON(payload); 
+		   ]]>
+		  </script>
+      <property name="messageType" value="application/json" scope="axis2" />
+
+		<call>
+			<endpoint>
+				<http method="PUT" uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}"/>
+			</endpoint>
+		</call>
+	</sequence>
+</template>

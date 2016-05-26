@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~   WSO2 Inc. licenses this file to you under the Apache License,
+  ~   Version 2.0 (the "License"); you may not use this file except
+  ~   in compliance with the License.
+  ~   You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing,
+  ~  software distributed under the License is distributed on an
+  ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  KIND, either express or implied.  See the License for the
+  ~  specific language governing permissions and limitations
+  ~  under the License.
+-->
+<template xmlns="http://ws.apache.org/ns/synapse" name="createAProject">
+
+    <parameter name="notes" description="Notes for a project" />
+    <parameter name="name" description="Name for the project" />
+    <parameter name="workspace" description="The workspace Id" />
+
+	<sequence>
+        <property name="uri.var.notes" expression="$func:notes" />
+        <property name="uri.var.name" expression="$func:name" />
+        <property name="uri.var.workspace" expression="$func:workspace" />
+        <payloadFactory media-type="json">
+            <format>
+                {
+                    "data":{
+                        "workspace":"$1"
+                    }
+                }
+            </format>
+            <args>
+                <arg evaluator="xml" expression="$func:workspace"/>
+            </args>
+        </payloadFactory>
+
+        <script language="js">
+            <![CDATA[
+
+              var notes = mc.getProperty('uri.var.notes');
+              var name = mc.getProperty('uri.var.name');
+
+              var payload = mc.getPayloadJSON();
+
+            if (notes != null && notes != "") {
+            payload.data.notes = notes;
+            }
+            if (name != null && name != "") {
+            payload.data.name = name;
+            }
+            mc.setPayloadJSON(payload);
+           ]]>
+        </script>
+        <property name="messageType" value="application/json" scope="axis2" />
+		<call>
+			<endpoint>
+				<http method="POST"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/projects"/>
+			</endpoint>
+		</call>
+	</sequence>
+</template>
