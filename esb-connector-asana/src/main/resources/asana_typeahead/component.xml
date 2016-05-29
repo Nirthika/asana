@@ -17,10 +17,10 @@
   ~  under the License.
 -->
 <component name="asana_typeahead" type="synapse/template">
-	<subComponents>
-		<component name="query">
-			<file>query.xml</file>
-			<description>Query</description>
-		</component>
-	</subComponents>
+    <subComponents>
+        <component name="query">
+            <file>query.xml</file>
+            <description>Query</description>
+        </component>
+    </subComponents>
 </component>

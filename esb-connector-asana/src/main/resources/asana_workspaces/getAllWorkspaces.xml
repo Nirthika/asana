@@ -17,12 +17,12 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="getAllWorkspaces">
-  <sequence>
-    <call>
-      <endpoint>
-        <http method="GET"
-              uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/workspaces"/>
-      </endpoint>
-    </call>
-  </sequence>
+    <sequence>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/workspaces"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

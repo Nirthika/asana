@@ -41,7 +41,7 @@
 
     <sequence name="main">
         <in>
-            <switch source="//m0:getQuote/m0:request/m0:symbol" xmlns:m0="http://services.samples">
+            <switch source="//m0:getQuote/m0:request/m0:symbol">
                 <case regex="IBM">
                     <send>
                         <endpoint>

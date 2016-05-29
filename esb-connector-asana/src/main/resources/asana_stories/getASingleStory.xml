@@ -17,14 +17,14 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="getASingleStory">
-	<parameter name="storyId" description="a String containing the story id." />
-	<sequence>
-		<property name="uri.var.storyId" expression="$func:storyId" />
-		<call>
-			<endpoint>
-				<http method="GET"
-					  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/stories/{uri.var.storyId}"/>
-			</endpoint>
-		</call>
-	</sequence>
+    <parameter name="storyId" description="a String containing the story id."/>
+    <sequence>
+        <property name="uri.var.storyId" expression="$func:storyId"/>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/stories/{uri.var.storyId}"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

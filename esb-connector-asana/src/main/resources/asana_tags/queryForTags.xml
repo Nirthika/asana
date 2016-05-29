@@ -17,14 +17,14 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="queryForTags">
-	<parameter name="workspace" description="a String containing the workspace id." />
-	<sequence>
-		<property name="uri.var.workspace" expression="$func:workspace" />
-		<call>
-			<endpoint>
-				<http method="GET"
-					  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/workspaces/{uri.var.workspace}/tags"/>
-			</endpoint>
-		</call>
-	</sequence>
+    <parameter name="workspace" description="a String containing the workspace id."/>
+    <sequence>
+        <property name="uri.var.workspace" expression="$func:workspace"/>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/workspaces/{uri.var.workspace}/tags"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

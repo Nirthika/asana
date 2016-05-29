@@ -24,12 +24,15 @@
     <proxy name="StockQuoteProxy">
         <target>
             <inSequence>
-                <header name="wsrm:SequenceAcknowledgement" action="remove"
-                        xmlns:wsrm="http://docs.oasis-open.org/ws-rx/wsrm/200702"/>
-                <header name="wsrm:Sequence" action="remove"
-                        xmlns:wsrm="http://docs.oasis-open.org/ws-rx/wsrm/200702"/>
-                <header name="wsrm:AckRequested" action="remove"
-                        xmlns:wsrm="http://docs.oasis-open.org/ws-rx/wsrm/200702"/>
+                <header xmlns:wsrm="http://docs.oasis-open.org/ws-rx/wsrm/200702"
+                        name="wsrm:SequenceAcknowledgement"
+                        action="remove"/>
+                <header xmlns:wsrm="http://docs.oasis-open.org/ws-rx/wsrm/200702"
+                        name="wsrm:Sequence"
+                        action="remove"/>
+                <header xmlns:wsrm="http://docs.oasis-open.org/ws-rx/wsrm/200702"
+                        name="wsrm:AckRequested"
+                        action="remove"/>
                 <send>
                     <endpoint>
                         <address uri="http://localhost:9000/services/SimpleStockQuoteService"/>

@@ -17,44 +17,40 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="typeaheadSearch">
-  <parameter name="workspace" description="Workspace id to be retrieved."/>
-  <parameter name="type" description="The type of values the typeahead should return i.e,user,task"/>
-  <parameter name="query" description="The string that will be used to search for relevant objects"/>
-  <parameter name="count" description="The number of results to return"/>
-  <sequence>
-    <property name="uri.var.workspace" expression="$func:workspace"/>
-    <property name="uri.var.type" expression="$func:type"/>
-    <property name="uri.var.query" expression="$func:query"/>
-    <property name="uri.var.count" expression="$func:count"/>
-	<script language="js">
+    <parameter name="workspace" description="Workspace id to be retrieved."/>
+    <parameter name="type"
+               description="The type of values the typeahead should return i.e,user,task"/>
+    <parameter name="query"
+               description="The string that will be used to search for relevant objects"/>
+    <parameter name="count" description="The number of results to return"/>
+    <sequence>
+        <property name="uri.var.workspace" expression="$func:workspace"/>
+        <property name="uri.var.type" expression="$func:type"/>
+        <property name="uri.var.query" expression="$func:query"/>
+        <property name="uri.var.count" expression="$func:count"/>
+        <script language="js">
             <![CDATA[
-				
 				var type = mc.getProperty('uri.var.type');
 				var count = mc.getProperty('uri.var.count');
 				var query = mc.getProperty('uri.var.query');
 				var query1="";
-				
                 if (type != null && type != ""){
 					query1+='type='+type+'&';
-                    }
-                
+                }
                 if (query != null && query != ""){
-					query1+='query='+query+'&';
-                    }
-					
+				    query1+='query='+query+'&';
+                }
 				if (count != null && count != ""){
 					query1+='count='+count+'&';
-                    }
-
+                }
 				mc.setProperty('uri.var.apiParameters', query1);
 			]]>
         </script>
-                
-		<call>
-			<endpoint>
-				<http method="GET"
-					  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/workspaces/{uri.var.workspace}/typeahead?{+uri.var.apiParameters}"/>
-			</endpoint>
-		</call>
-	</sequence>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/workspaces/{uri.var.workspace}/typeahead?{+uri.var.apiParameters}"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

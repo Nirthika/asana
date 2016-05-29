@@ -18,55 +18,47 @@
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="createASubtask">
     <parameter name="taskId" description="Task id to be retrieved."/>
-    <parameter name="assignee" description="a String containing the assignee of the subtask" />
-    <parameter name="notes" description="a String containing the note about the subtask" />
-    <parameter name="name" description="a String containing the name of the subtask" />
-	<parameter name="followers" description="an array containing the followers of the subtask" />
-
-
+    <parameter name="assignee" description="a String containing the assignee of the subtask"/>
+    <parameter name="notes" description="a String containing the note about the subtask"/>
+    <parameter name="name" description="a String containing the name of the subtask"/>
+    <parameter name="followers" description="an array containing the followers of the subtask"/>
     <sequence>
         <property name="uri.var.taskId" expression="$func:taskId"/>
-		<property name="uri.var.assignee" expression="$func:assignee" /> 
-		<property name="uri.var.notes" expression="$func:notes" /> 
-		<property name="uri.var.name" expression="$func:name" />
-		<property name="uri.var.followers" expression="$func:followers" />
-
-		<payloadFactory media-type="json">
+        <property name="uri.var.assignee" expression="$func:assignee"/>
+        <property name="uri.var.notes" expression="$func:notes"/>
+        <property name="uri.var.name" expression="$func:name"/>
+        <property name="uri.var.followers" expression="$func:followers"/>
+        <payloadFactory media-type="json">
             <format>
                 {
                     "data":{
                     }
                 }
-
-
             </format>
-            
-        </payloadFactory>		
-		<script language="js">
-		 <![CDATA[     
-		 
-		  var assignee = mc.getProperty('uri.var.assignee');
-		  var notes = mc.getProperty('uri.var.notes');
-		  var name = mc.getProperty('uri.var.name');
-		  var followers = mc.getProperty('uri.var.followers');
-		  var payload = mc.getPayloadJSON();   
-		if (assignee != null && assignee != "") {
-		payload.data.assignee = assignee;
-		} 
-		if (notes != null && notes != "") {
-		payload.data.notes = notes;
-		} 
-		if (name != null && name != "") {
-		payload.data.name = name;
-		} 
-		if (followers != null && followers != "") {
-		payload.data.followers = eval("(" + followers + ")");
-		} 
-         mc.setPayloadJSON(payload); 
-		   ]]>
-		</script>
-
-      <property name="messageType" value="application/json" scope="axis2" />
+        </payloadFactory>
+        <script language="js">
+            <![CDATA[
+                var assignee = mc.getProperty('uri.var.assignee');
+                var notes = mc.getProperty('uri.var.notes');
+                var name = mc.getProperty('uri.var.name');
+                var followers = mc.getProperty('uri.var.followers');
+                var payload = mc.getPayloadJSON();
+                if (assignee != null && assignee != "") {
+                    payload.data.assignee = assignee;
+                }
+                if (notes != null && notes != "") {
+                    payload.data.notes = notes;
+                }
+                if (name != null && name != "") {
+                    payload.data.name = name;
+                }
+                if (followers != null && followers != "") {
+                    payload.data.followers = eval("(" + followers + ")");
+                }
+                mc.setPayloadJSON(payload);
+            ]]>
+        </script>
+        <property name="messageType" value="application/json" scope="axis2"/>
         <call>
             <endpoint>
                 <http method="post"

@@ -17,18 +17,18 @@
   ~  under the License.
 -->
 <component name="asana_attachment" type="synapse/template">
-	<subComponents>
-		<component name="getSingleAttachment">
-			<file>getSingleAttachment.xml</file>
-			<description>get single asana attachment</description>
-		</component>
-		<component name="getAllAttachments">
-			<file>getAllAttachments.xml</file>
-			<description>get all asana attachments</description>
-		</component>
-		<component name="uploadAnAttachment">
-			<file>uploadAnAttachment.xml</file>
-			<description>upload an asana attachment</description>
-		</component>
-	</subComponents>
+    <subComponents>
+        <component name="getSingleAttachment">
+            <file>getSingleAttachment.xml</file>
+            <description>get single asana attachment</description>
+        </component>
+        <component name="getAllAttachments">
+            <file>getAllAttachments.xml</file>
+            <description>get all asana attachments</description>
+        </component>
+        <component name="uploadAnAttachment">
+            <file>uploadAnAttachment.xml</file>
+            <description>upload an asana attachment</description>
+        </component>
+    </subComponents>
 </component>

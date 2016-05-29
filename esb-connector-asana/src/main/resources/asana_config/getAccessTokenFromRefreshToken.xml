@@ -23,17 +23,19 @@
     <parameter name="clientSecret"
                description="Client Secret of your App, given by Asana when you registered your application"/>
     <parameter name="grantType" description="Token grant type. Value must be set to refresh_token"/>
-    <parameter name="redirectUri" description="We must set the uri redirect to on success or error. This must match the Redirect URL specified in the application settings."/>
+    <parameter name="redirectUri"
+               description="We must set the uri redirect to on success or error.
+               This must match the Redirect URL specified in the application settings."/>
     <sequence>
         <property name="uri.var.refreshToken" expression="$func:refreshToken"/>
         <property name="uri.var.clientId" expression="$func:clientId"/>
         <property name="uri.var.clientSecret" expression="$func:clientSecret"/>
         <property name="uri.var.grantType" expression="$func:grantType"/>
         <property name="uri.var.redirectUri" expression="$func:redirectUri"/>
-
         <call>
             <endpoint>
-               <http method="POST" uri-template="https://app.asana.com/-/oauth_token?client_id={+uri.var.clientId}&amp;client_secret={+uri.var.clientSecret}&amp;redirect_uri={+uri.var.redirectUri}&amp;refresh_token={+uri.var.refreshToken}&amp;grant_type={+uri.var.grantType}"/>
+                <http method="POST"
+                      uri-template="https://app.asana.com/-/oauth_token?client_id={+uri.var.clientId}&amp;client_secret={+uri.var.clientSecret}&amp;redirect_uri={+uri.var.redirectUri}&amp;refresh_token={+uri.var.refreshToken}&amp;grant_type={+uri.var.grantType}"/>
             </endpoint>
         </call>
         <!-- Setting the new access token to the property. -->
@@ -43,27 +45,27 @@
                   scope="default"/>
         <script language="js">
             <![CDATA[
-             importPackage(Packages.org.apache.synapse.config);
-             var newAccessToken = mc.getProperty('uri.var.accessToken');
-             var newSystemTime = mc.getProperty('systemTime');
-             var newAccessRegistryPath = mc.getProperty('uri.var.accessTokenRegistryPath');
-             var newTimeRegistryPath = mc.getProperty('uri.var.timeRegistryPath');
-             if(newAccessToken != null && newAccessToken != ''){
-                var existingAccessToken = mc.getConfiguration().getRegistry().getResource(newAccessRegistryPath);
-                var existingTime = mc.getConfiguration().getRegistry().getResource(newTimeRegistryPath);
-                if(existingAccessToken == null){
-                  // Create the registry entry if no such entry exists.
-                  mc.getConfiguration().getRegistry().newResource(newAccessRegistryPath, false);
-                  mc.getConfiguration().getRegistry().updateResource(newAccessRegistryPath, newAccessToken);
-                  mc.getConfiguration().getRegistry().newResource(newTimeRegistryPath, false);
-                  mc.getConfiguration().getRegistry().updateResource(newTimeRegistryPath, newSystemTime);
-                } else {
-                  // Update the registry entry if it already exists.
-                  mc.getConfiguration().getRegistry().updateResource(newAccessRegistryPath, newAccessToken);
-                  mc.getConfiguration().getRegistry().updateResource(newTimeRegistryPath, newSystemTime);
+                importPackage(Packages.org.apache.synapse.config);
+                var newAccessToken = mc.getProperty('uri.var.accessToken');
+                var newSystemTime = mc.getProperty('systemTime');
+                var newAccessRegistryPath = mc.getProperty('uri.var.accessTokenRegistryPath');
+                var newTimeRegistryPath = mc.getProperty('uri.var.timeRegistryPath');
+                if(newAccessToken != null && newAccessToken != ''){
+                    var existingAccessToken = mc.getConfiguration().getRegistry().getResource(newAccessRegistryPath);
+                    var existingTime = mc.getConfiguration().getRegistry().getResource(newTimeRegistryPath);
+                    if(existingAccessToken == null){
+                        // Create the registry entry if no such entry exists.
+                        mc.getConfiguration().getRegistry().newResource(newAccessRegistryPath, false);
+                        mc.getConfiguration().getRegistry().updateResource(newAccessRegistryPath, newAccessToken);
+                        mc.getConfiguration().getRegistry().newResource(newTimeRegistryPath, false);
+                        mc.getConfiguration().getRegistry().updateResource(newTimeRegistryPath, newSystemTime);
+                    } else {
+                    // Update the registry entry if it already exists.
+                    mc.getConfiguration().getRegistry().updateResource(newAccessRegistryPath, newAccessToken);
+                    mc.getConfiguration().getRegistry().updateResource(newTimeRegistryPath, newSystemTime);
+                    }
                 }
-             }
-         ]]>
+            ]]>
         </script>
         <!-- Remove custom Headers from the API Response -->
         <header name="Cache-Control" action="remove" scope="transport"/>

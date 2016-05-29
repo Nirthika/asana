@@ -17,14 +17,14 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="getASingleTag">
-	<parameter name="tagId" description="a String containing the tag id." />
-	<sequence>
-		<property name="uri.var.tagId" expression="$func:tagId" />
-		<call>
-			<endpoint>
-				<http method="GET"
-					  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tags/{uri.var.tagId}"/>
-			</endpoint>
-		</call>
-	</sequence>
+    <parameter name="tagId" description="a String containing the tag id."/>
+    <sequence>
+        <property name="uri.var.tagId" expression="$func:tagId"/>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tags/{uri.var.tagId}"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

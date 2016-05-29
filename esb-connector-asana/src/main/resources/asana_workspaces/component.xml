@@ -17,26 +17,26 @@
   ~  under the License.
 -->
 <component name="asana_workspaces" type="synapse/template">
-	<subComponents>
-		<component name="getAWorkspace">
-			<file>getAWorkspace.xml</file>
-			<description>Get a Workspace</description>
-		</component>
-		<component name="getAllWorkspaces">
-			<file>getAllWorkspaces.xml</file>
-			<description>Get Available Workspaces</description>
-		</component>
-		<component name="updateAWorkspace">
-			<file>updateAWorkspace.xml</file>
-			<description>Update a workspace</description>
-		</component>
-		<component name="typeaheadSearch">
-			<file>typeaheadSearch.xml</file>
-			<description>type ahead Search</description>
-		</component>
-		<component name="addUser">
-			<file>addUser.xml</file>
-			<description>Add user</description>
-		</component>
-	</subComponents>
+    <subComponents>
+        <component name="getAWorkspace">
+            <file>getAWorkspace.xml</file>
+            <description>Get a Workspace</description>
+        </component>
+        <component name="getAllWorkspaces">
+            <file>getAllWorkspaces.xml</file>
+            <description>Get Available Workspaces</description>
+        </component>
+        <component name="updateAWorkspace">
+            <file>updateAWorkspace.xml</file>
+            <description>Update a workspace</description>
+        </component>
+        <component name="typeaheadSearch">
+            <file>typeaheadSearch.xml</file>
+            <description>type ahead Search</description>
+        </component>
+        <component name="addUser">
+            <file>addUser.xml</file>
+            <description>Add user</description>
+        </component>
+    </subComponents>
 </component>

@@ -17,32 +17,29 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="updateATag">
-    <parameter name="tagId" description="a String containing the tag id." />
-	<parameter name="name" description="a String containing the name of tag." />
-
-	<sequence>
+    <parameter name="tagId" description="a String containing the tag id."/>
+    <parameter name="name" description="a String containing the name of tag."/>
+    <sequence>
         <payloadFactory media-type="json">
             <format>
                 {
-                "data":{
-                "name":"$1"
-                }
+                    "data":{
+                        "name":"$1"
+                    }
                 }
             </format>
             <args>
                 <arg evaluator="xml" expression="$func:name"/>
             </args>
         </payloadFactory>
-
-		<property name="uri.var.tagId" expression="$func:tagId" />
-        <property name="messageType" value="application/json" scope="axis2" />
-		<property name="Accept-Encoding" action="remove" scope="transport" />
-
+        <property name="uri.var.tagId" expression="$func:tagId"/>
+        <property name="messageType" value="application/json" scope="axis2"/>
+        <property name="Accept-Encoding" action="remove" scope="transport"/>
         <call>
             <endpoint>
                 <http method="PUT"
                       uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tags/{uri.var.tagId}"/>
             </endpoint>
         </call>
-	</sequence>
+    </sequence>
 </template>

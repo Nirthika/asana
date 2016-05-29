@@ -17,21 +17,20 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="uploadAnAttachment">
-  <parameter name="taskId" description="Task id to be retrieved."/>
-  <parameter name="accessToken" description="The access token."/>
-	<sequence>
+    <parameter name="taskId" description="Task id to be retrieved."/>
+    <parameter name="accessToken" description="The access token."/>
+    <sequence>
         <property name="uri.var.taskId" expression="$func:taskId"/>
         <property name="uri.var.accessToken" expression="$func:accessToken"/>
-
-        <header name="Authorization" expression="fn:concat('Bearer ',get-property('uri.var.accessToken'))"
-                     scope="transport"/>
-        <header name="Content-Type" scope="transport" action="remove" />
-		<call>
-			<endpoint>
-				<http method="POST"
+        <header name="Authorization"
+                expression="fn:concat('Bearer ',get-property('uri.var.accessToken'))"
+                scope="transport"/>
+        <header name="Content-Type" scope="transport" action="remove"/>
+        <call>
+            <endpoint>
+                <http method="POST"
                       uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}/attachments"/>
             </endpoint>
-		</call>
-
-	</sequence>
+        </call>
+    </sequence>
 </template>

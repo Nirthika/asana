@@ -17,18 +17,17 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="queryForTasks">
-	<parameter name="workspace" description="a String containing the workspace id."/>
-	<parameter name="assignee" description="the particular assignee."/>
-	<parameter name="completedSince" description="a String containing the time"/>
-	<parameter name="modifiedSince" description="a String containing the time"/>
-	<sequence>
-		<property name="uri.var.workspace" expression="$func:workspace"/>
-		<property name="uri.var.assignee" expression="$func:assignee"/>
-		<property name="uri.var.completedSince" expression="$func:completedSince"/>
-		<property name="uri.var.modifiedSince" expression="$func:modifiedSince"/>
-		<script language="js">
+    <parameter name="workspace" description="a String containing the workspace id."/>
+    <parameter name="assignee" description="the particular assignee."/>
+    <parameter name="completedSince" description="a String containing the time"/>
+    <parameter name="modifiedSince" description="a String containing the time"/>
+    <sequence>
+        <property name="uri.var.workspace" expression="$func:workspace"/>
+        <property name="uri.var.assignee" expression="$func:assignee"/>
+        <property name="uri.var.completedSince" expression="$func:completedSince"/>
+        <property name="uri.var.modifiedSince" expression="$func:modifiedSince"/>
+        <script language="js">
             <![CDATA[
-				
 				var workspace = mc.getProperty('uri.var.workspace');
 				var assignee = mc.getProperty('uri.var.assignee');
 				var completedSince = mc.getProperty('uri.var.completedSince');
@@ -36,28 +35,24 @@
 				var query="";
 				if (workspace != null && workspace != ""){
 					query+='workspace='+workspace+'&';
-                    }
-				
-                if (assignee != null && assignee != ""){
+                }
+				if (assignee != null && assignee != ""){
 					query+='assignee='+assignee+'&';
-                    }
-				
-                if (completedSince != null && completedSince != ""){
+                }
+				if (completedSince != null && completedSince != ""){
 					query+='completed_since='+completedSince+'&';
-                    }
-
+                }
                 if (modifiedSince != null && modifiedSince != ""){
 					query+='modified_since='+modifiedSince+'&';
-                    }
+                }
 				mc.setProperty('uri.var.apiParameters', query);
 			]]>
         </script>
-                
-		<call>
-			<endpoint>
-				<http method="GET"
-					  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks?{+uri.var.apiParameters}"/>
-			</endpoint>
-		</call>
-	</sequence>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks?{+uri.var.apiParameters}"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

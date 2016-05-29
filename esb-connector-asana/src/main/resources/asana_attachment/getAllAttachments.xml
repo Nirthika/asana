@@ -17,15 +17,14 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="getAllAttachments">
-	<!-- Required parameters -->
-	<parameter name="taskId" description="Task id to be retrieved."/>
-	<sequence>
-		<property name="uri.var.taskId" expression="$func:taskId"/>
-		<call>
-			<endpoint>
-				<http method="GET"
-					  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}/attachments"/>
-			</endpoint>
-		</call>
-	</sequence>
+    <parameter name="taskId" description="Task id to be retrieved."/>
+    <sequence>
+        <property name="uri.var.taskId" expression="$func:taskId"/>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}/attachments"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

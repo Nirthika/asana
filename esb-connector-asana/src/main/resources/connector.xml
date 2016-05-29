@@ -17,17 +17,17 @@
   ~  under the License.
 -->
 <connector>
-	<component name="asana" package="org.wso2.carbon.connector">
-		<dependency component="asana_config"/>
-		<dependency component="asana_attachment"/>
-		<dependency component="asana_events"/>
-		<dependency component="asana_projects"/>
-		<dependency component="asana_stories"/>
-		<dependency component="asana_tags"/>
-		<dependency component="asana_tasks"/>
+    <component name="asana" package="org.wso2.carbon.connector">
+        <dependency component="asana_config"/>
+        <dependency component="asana_attachment"/>
+        <dependency component="asana_events"/>
+        <dependency component="asana_projects"/>
+        <dependency component="asana_stories"/>
+        <dependency component="asana_tags"/>
+        <dependency component="asana_tasks"/>
         <dependency component="asana_typeahead"/>
-		<dependency component="asana_users"/>
-		<dependency component="asana_workspaces"/>
-		<description>asana 6.0 cloud connector</description>
-	</component>
+        <dependency component="asana_users"/>
+        <dependency component="asana_workspaces"/>
+        <description>asana 6.0 cloud connector</description>
+    </component>
 </connector>

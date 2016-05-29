@@ -17,16 +17,17 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="getEventsOnResource">
-	<parameter name="resource" description="a String containing the project or task id." />
-    <parameter name="sync" description="a String containing the sync token received from the last request." />
-	<sequence>
-		<property name="uri.var.resource" expression="$func:resource"/>
+    <parameter name="resource" description="a String containing the project or task id."/>
+    <parameter name="sync"
+               description="a String containing the sync token received from the last request."/>
+    <sequence>
+        <property name="uri.var.resource" expression="$func:resource"/>
         <property name="uri.var.sync" expression="$func:sync"/>
-		<call>
-			<endpoint>
-				<http method="GET"
-					  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/events?resource={+uri.var.resource}&amp;sync={+uri.var.sync}"/>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/events?resource={+uri.var.resource}&amp;sync={+uri.var.sync}"/>
             </endpoint>
-		</call>
-	</sequence>
+        </call>
+    </sequence>
 </template>

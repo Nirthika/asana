@@ -18,8 +18,7 @@
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="removeATaskFromProject">
     <parameter name="taskId" description="Task id to be retrieved."/>
-    <parameter name="project" description="The project to remove the task from." />
-
+    <parameter name="project" description="The project to remove the task from."/>
     <sequence>
         <property name="uri.var.taskId" expression="$func:taskId"/>
         <payloadFactory media-type="json">
@@ -34,10 +33,8 @@
                 <arg evaluator="xml" expression="$func:project"/>
             </args>
         </payloadFactory>
-
-        <property name="messageType" value="application/json" scope="axis2" />
-        <property name="Accept-Encoding" action="remove" scope="transport" />
-
+        <property name="messageType" value="application/json" scope="axis2"/>
+        <property name="Accept-Encoding" action="remove" scope="transport"/>
         <call>
             <endpoint>
                 <http method="post"

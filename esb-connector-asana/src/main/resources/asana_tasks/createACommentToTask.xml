@@ -19,27 +19,22 @@
 <template xmlns="http://ws.apache.org/ns/synapse" name="createACommentToTask">
     <parameter name="taskId" description="The task Id to change the parent of "/>
     <parameter name="text" description="The plain text of the comment to add."/>
-
     <sequence>
         <property name="uri.var.taskId" expression="$func:taskId"/>
         <payloadFactory media-type="json">
             <format>
                 {
-                "data":{
-                "text":"$1"
+                    "data":{
+                        "text":"$1"
+                    }
                 }
-                }
-
-
             </format>
             <args>
                 <arg evaluator="xml" expression="$func:text"/>
             </args>
         </payloadFactory>
-
-        <property name="messageType" value="application/json" scope="axis2" />
-        <property name="Accept-Encoding" action="remove" scope="transport" />
-
+        <property name="messageType" value="application/json" scope="axis2"/>
+        <property name="Accept-Encoding" action="remove" scope="transport"/>
         <call>
             <endpoint>
                 <http method="post"

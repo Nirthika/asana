@@ -17,14 +17,14 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="getProjectTasks">
-	<parameter name="projectId" description="a String containing the project id." />
-	<sequence>
-		<property name="uri.var.projectId" expression="$func:projectId" />
-		<call>
-			<endpoint>
-				<http method="GET"
-					  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/projects/{uri.var.projectId}/tasks"/>
-			</endpoint>
-		</call>
-	</sequence>
+    <parameter name="projectId" description="a String containing the project id."/>
+    <sequence>
+        <property name="uri.var.projectId" expression="$func:projectId"/>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/projects/{uri.var.projectId}/tasks"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

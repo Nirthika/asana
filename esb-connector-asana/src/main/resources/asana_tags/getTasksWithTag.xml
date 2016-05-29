@@ -17,9 +17,9 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="getTasksWithTag">
-    <parameter name="tagId" description="a String containing the tag id." />
+    <parameter name="tagId" description="a String containing the tag id."/>
     <sequence>
-        <property name="uri.var.tagId" expression="$func:tagId" />
+        <property name="uri.var.tagId" expression="$func:tagId"/>
         <call>
             <endpoint>
                 <http method="GET"

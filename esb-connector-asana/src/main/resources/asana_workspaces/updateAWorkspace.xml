@@ -18,7 +18,7 @@
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="updateAWorkspace">
     <parameter name="workspace" description="Workspace id to be retrieved."/>
-    <parameter name="name" description="a String containing the name of the workspace" />
+    <parameter name="name" description="a String containing the name of the workspace"/>
     <sequence>
         <property name="uri.var.workspace" expression="$func:workspace"/>
         <property name="uri.var.name" expression="$func:name"/>
@@ -34,8 +34,8 @@
                 <arg evaluator="xml" expression="$func:name"/>
             </args>
         </payloadFactory>
-        <property name="messageType" value="application/json" scope="axis2" />
-        <property name="Accept-Encoding" action="remove" scope="transport" />
+        <property name="messageType" value="application/json" scope="axis2"/>
+        <property name="Accept-Encoding" action="remove" scope="transport"/>
         <call>
             <endpoint>
                 <http method="put"

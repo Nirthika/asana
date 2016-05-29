@@ -17,14 +17,14 @@
   ~  under the License.
 -->
 <component name="asana_config" type="synapse/template">
-	<subComponents>
-		<component name="getAccessTokenFromRefreshToken">
-			<file>getAccessTokenFromRefreshToken.xml</file>
-			<description>get the access token from refresh token</description>
-		</component>
-		<component name="init">
-			<file>init.xml</file>
-			<description>configure asana connector</description>
-		</component>
-	</subComponents>
+    <subComponents>
+        <component name="getAccessTokenFromRefreshToken">
+            <file>getAccessTokenFromRefreshToken.xml</file>
+            <description>get the access token from refresh token</description>
+        </component>
+        <component name="init">
+            <file>init.xml</file>
+            <description>configure asana connector</description>
+        </component>
+    </subComponents>
 </component>

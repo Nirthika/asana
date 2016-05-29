@@ -33,7 +33,7 @@
                     </m:getQuote>
                 </format>
                 <args>
-                    <arg xmlns:m0="http://services.samples" expression="//m0:Code"/>
+                    <arg expression="//m0:Code"/>
                 </args>
             </payloadFactory>
         </in>
@@ -47,8 +47,8 @@
                     </m:CheckPriceResponse>
                 </format>
                 <args>
-                    <arg xmlns:m0="http://services.samples/xsd" expression="//m0:symbol"/>
-                    <arg xmlns:m0="http://services.samples/xsd" expression="//m0:last"/>
+                    <arg expression="//m0:symbol"/>
+                    <arg expression="//m0:last"/>
                 </args>
             </payloadFactory>
         </out>

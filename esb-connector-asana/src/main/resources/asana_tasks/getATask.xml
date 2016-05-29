@@ -17,15 +17,14 @@
   ~  under the License.
 -->
 <template name="getATask" xmlns="http://ws.apache.org/ns/synapse">
-	<!-- Required parameters -->
-	<parameter name="taskId" description="Task id to be retrieved."/>
-	<sequence>
-		<property name="uri.var.taskId" expression="$func:taskId"/>
-		<call>
-			<endpoint>
-				<http method="get"
-					  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}"/>
-			</endpoint>
-		</call>
-	</sequence>
+    <parameter name="taskId" description="Task id to be retrieved."/>
+    <sequence>
+        <property name="uri.var.taskId" expression="$func:taskId"/>
+        <call>
+            <endpoint>
+                <http method="get"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

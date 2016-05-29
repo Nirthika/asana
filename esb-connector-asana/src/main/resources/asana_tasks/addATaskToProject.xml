@@ -18,24 +18,24 @@
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="addATaskToProject">
     <parameter name="taskId" description="Task id to be retrieved."/>
-    <parameter name="project" description="a String containing the project of the task" />
-    <parameter name="insertAfter" description="task Id in the project ." />
-    <parameter name="insertBefore" description="task Id in the project " />
-	<parameter name="section" description="section id retrived"/>
-    
+    <parameter name="project" description="a String containing the project of the task"/>
+    <parameter name="insertAfter" description="task Id in the project ."/>
+    <parameter name="insertBefore" description="task Id in the project "/>
+    <parameter name="section" description="section id retrived"/>
+
     <sequence>
         <property name="uri.var.taskId" expression="$func:taskId"/>
-		<property name="uri.var.project" expression="$func:project" /> 
-		<property name="uri.var.insertAfter" expression="$func:insertAfter" /> 
-		<property name="uri.var.insertBefore" expression="$func:insertBefore" />
-		<property name="uri.var.section" expression="$func:section" />
+        <property name="uri.var.project" expression="$func:project"/>
+        <property name="uri.var.insertAfter" expression="$func:insertAfter"/>
+        <property name="uri.var.insertBefore" expression="$func:insertBefore"/>
+        <property name="uri.var.section" expression="$func:section"/>
 
-		<payloadFactory media-type="json">
+        <payloadFactory media-type="json">
             <format>
                 {
-                    "data":{
-                        "project":"$1"
-                    }
+                "data":{
+                "project":"$1"
+                }
                 }
 
 
@@ -43,9 +43,9 @@
             <args>
                 <arg evaluator="xml" expression="$func:project"/>
             </args>
-        </payloadFactory>		
-		<script language="js">
-		 <![CDATA[     
+        </payloadFactory>
+        <script language="js">
+            <![CDATA[
 		  var insertAfter = mc.getProperty('uri.var.insertAfter');
 		  var insertBefore = mc.getProperty('uri.var.insertBefore');
 		  var section = mc.getProperty('uri.var.section');
@@ -62,9 +62,9 @@
 		} 
          mc.setPayloadJSON(payload); 
 		   ]]>
-		</script>
+        </script>
 
-      <property name="messageType" value="application/json" scope="axis2" />
+        <property name="messageType" value="application/json" scope="axis2"/>
         <call>
             <endpoint>
                 <http method="post"

@@ -17,14 +17,14 @@
   ~  under the License.
 -->
 <component name="asana_users" type="synapse/template">
-	<subComponents>
-		<component name="getASingleUser">
-			<file>getASingleUser.xml</file>
-			<description>get single user</description>
-		</component>
-		<component name="getAllUsers">
-			<file>getAllUsers.xml</file>
-			<description>get all users</description>
-		</component>
-	</subComponents>
+    <subComponents>
+        <component name="getASingleUser">
+            <file>getASingleUser.xml</file>
+            <description>get single user</description>
+        </component>
+        <component name="getAllUsers">
+            <file>getAllUsers.xml</file>
+            <description>get all users</description>
+        </component>
+    </subComponents>
 </component>

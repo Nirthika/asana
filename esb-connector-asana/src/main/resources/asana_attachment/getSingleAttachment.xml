@@ -17,15 +17,14 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="getSingleAttachment">
-	<!-- Required parameters -->
-	<parameter name="attachmentId" description="Attachment id to be retrieved."/>
-	<sequence>
-		<property name="uri.var.attachmentId" expression="$func:attachmentId"/>
-		<call>
-			<endpoint>
-				<http method="GET"
-					  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/attachments/{uri.var.attachmentId}/"/>
-			</endpoint>
-		</call>
-	</sequence>
+    <parameter name="attachmentId" description="Attachment id to be retrieved."/>
+    <sequence>
+        <property name="uri.var.attachmentId" expression="$func:attachmentId"/>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/attachments/{uri.var.attachmentId}/"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

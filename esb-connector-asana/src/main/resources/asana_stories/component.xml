@@ -17,18 +17,18 @@
   ~  under the License.
 -->
 <component name="asana_stories" type="synapse/template">
-	<subComponents>
-		<component name="getASingleStory">
-			<file>getASingleStory.xml</file>
-			<description>Get a single story</description>
-		</component>
-		<component name="getStoriesOnObject">
-			<file>getStoriesOnObject.xml</file>
-			<description>Get stories on object</description>
-		</component>
-		<component name="commentingOnAnObject">
-			<file>commentingOnAnObject.xml</file>
-			<description>Commenting on an object</description>
-		</component>
-	</subComponents>
+    <subComponents>
+        <component name="getASingleStory">
+            <file>getASingleStory.xml</file>
+            <description>Get a single story</description>
+        </component>
+        <component name="getStoriesOnObject">
+            <file>getStoriesOnObject.xml</file>
+            <description>Get stories on object</description>
+        </component>
+        <component name="commentingOnAnObject">
+            <file>commentingOnAnObject.xml</file>
+            <description>Commenting on an object</description>
+        </component>
+    </subComponents>
 </component>

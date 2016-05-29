@@ -17,45 +17,39 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="updateAProject">
-    <parameter name="projectId" description="a String containing the project id." />
-    <parameter name="name" description="Name for the project" />
-	<parameter name="notes" description="Notes for a project" />
-
-	<sequence>
-      <payloadFactory media-type="json">
-        <format>
-          {
-          "data":{
-          }
-          }
-        </format>
-        
-      </payloadFactory>
-		<script language="js">
+    <parameter name="projectId" description="a String containing the project id."/>
+    <parameter name="name" description="Name for the project"/>
+    <parameter name="notes" description="Notes for a project"/>
+    <sequence>
+        <payloadFactory media-type="json">
+            <format>
+                {
+                    "data":{
+                    }
+                }
+            </format>
+        </payloadFactory>
+        <script language="js">
             <![CDATA[
-
-              var notes = mc.getProperty('uri.var.notes');
-              var name = mc.getProperty('uri.var.name');
-
-              var payload = mc.getPayloadJSON();
-
-            if (notes != null && notes != "") {
-            payload.data.notes = notes;
-            }
-            if (name != null && name != "") {
-            payload.data.name = name;
-            }
-            mc.setPayloadJSON(payload);
-           ]]>
+                var notes = mc.getProperty('uri.var.notes');
+                var name = mc.getProperty('uri.var.name');
+                var payload = mc.getPayloadJSON();
+                if (notes != null && notes != "") {
+                    payload.data.notes = notes;
+                }
+                if (name != null && name != "") {
+                    payload.data.name = name;
+                }
+                mc.setPayloadJSON(payload);
+            ]]>
         </script>
-		<property name="uri.var.projectId" expression="$func:projectId" />
-		<property name="messageType" value="application/json" scope="axis2" />
-		
-		<call>
-			<endpoint>
-				<http method="PUT"
-                    uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/projects/{uri.var.projectId}"/>
-			</endpoint>
-		</call>
-	</sequence>
+        <property name="uri.var.projectId" expression="$func:projectId"/>
+        <property name="messageType" value="application/json" scope="axis2"/>
+        <call>
+            <endpoint>
+                <http method="PUT"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/projects/{uri.var.projectId}"/>
+            </endpoint>
+        </call>
+    </sequence>
 </template>

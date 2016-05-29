@@ -17,7 +17,6 @@
   ~  under the License.
 -->
 <template name="getProjectDetailsOfTask" xmlns="http://ws.apache.org/ns/synapse">
-    <!-- Required parameters -->
     <parameter name="taskId" description="Task id to be retrieved."/>
     <sequence>
         <property name="uri.var.taskId" expression="$func:taskId"/>

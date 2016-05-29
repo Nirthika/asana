@@ -17,13 +17,11 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="createATag">
-    <parameter name="name" description="The tag name." />
-    <parameter name="workspace" description="The workspace Id." />
-
+    <parameter name="name" description="The tag name."/>
+    <parameter name="workspace" description="The workspace Id."/>
     <sequence>
-        <property name="uri.var.name" expression="$func:name" />
-        <property name="uri.var.workspace" expression="$func:workspace" />
-
+        <property name="uri.var.name" expression="$func:name"/>
+        <property name="uri.var.workspace" expression="$func:workspace"/>
         <payloadFactory media-type="json">
             <format>
                 {
@@ -33,25 +31,20 @@
                 }
             </format>
             <args>
-                 <arg evaluator="xml" expression="$func:workspace"/>
+                <arg evaluator="xml" expression="$func:workspace"/>
             </args>
         </payloadFactory>
         <script language="js">
-        <![CDATA[
-
-		  var name = mc.getProperty('uri.var.name');
-
-		  var payload = mc.getPayloadJSON();
-
-            if (name != null && name != "") {
-            payload.data.name = name;
-            }
-            mc.setPayloadJSON(payload);
-		]]>
+            <![CDATA[
+		        var name = mc.getProperty('uri.var.name');
+		        var payload = mc.getPayloadJSON();
+                if (name != null && name != "") {
+                    payload.data.name = name;
+                }
+                mc.setPayloadJSON(payload);
+            ]]>
         </script>
-
-        <property name="messageType" value="application/json" scope="axis2" />
-
+        <property name="messageType" value="application/json" scope="axis2"/>
         <call>
             <endpoint>
                 <http method="POST"

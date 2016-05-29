@@ -56,8 +56,10 @@
                     </rule>
                 </ruleSet>
                 <input namespace="http://services.samples" wrapperElementName="getQuote">
-                    <fact xmlns:m0="http://services.samples" elementName="symbol" namespace="http://services.samples"
-                          type="java.lang.String" xpath="//m0:getQuote/m0:request/m0:symbol/child::text()"/>
+                    <fact elementName="symbol"
+                          namespace="http://services.samples"
+                          type="java.lang.String"
+                          xpath="//m0:getQuote/m0:request/m0:symbol/child::text()"/>
                 </input>
                 <output namespace="http://services.samples" wrapperElementName="getQuoteRespone">
                     <fact elementName="accept" namespace="" type="java.lang.String"/>
@@ -77,7 +79,7 @@
                     <sequence key="nonExistentService"/>
                 </case>
                 <case regex="mfstEndPoint">
-                     <sequence key="nonExistentService"/>
+                    <sequence key="nonExistentService"/>
                 </case>
             </switch>
 
@@ -102,7 +104,7 @@
     </sequence>
     <sequence name="myFaultHandler">
         <makefault>
-            <code value="tns:Receiver" xmlns:tns="http://www.w3.org/2003/05/soap-envelope"/>
+            <code xmlns:tns="http://www.w3.org/2003/05/soap-envelope" value="tns:Receiver"/>
             <reason expression="get-property('ERROR_MESSAGE')"/>
         </makefault>
 

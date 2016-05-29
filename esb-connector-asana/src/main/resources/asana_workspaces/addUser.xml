@@ -17,25 +17,25 @@
   ~  under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="addUser">
-    <parameter name="workspace" description="a String containing the workspace id." />
-    <parameter name="user" description="a String containing the user." />
+    <parameter name="workspace" description="a String containing the workspace id."/>
+    <parameter name="user" description="a String containing the user."/>
     <sequence>
         <property name="uri.var.workspace" expression="$func:workspace"/>
-        <property name="uri.var.user" expression="$func:user" />
+        <property name="uri.var.user" expression="$func:user"/>
         <payloadFactory media-type="json">
             <format>
                 {
-                "data":{
-                "user":"$1"
-                }
+                    "data":{
+                        "user":"$1"
+                    }
                 }
             </format>
             <args>
                 <arg evaluator="xml" expression="$func:user"/>
             </args>
         </payloadFactory>
-        <property name="messageType" value="application/json" scope="axis2" />
-        <property name="Accept-Encoding" action="remove" scope="transport" />
+        <property name="messageType" value="application/json" scope="axis2"/>
+        <property name="Accept-Encoding" action="remove" scope="transport"/>
         <call>
             <endpoint>
                 <http method="POST"

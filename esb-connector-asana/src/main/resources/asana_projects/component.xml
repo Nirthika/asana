@@ -17,34 +17,34 @@
   ~  under the License.
 -->
 <component name="asana_projects" type="synapse/template">
-	<subComponents>
-		<component name="createAProject">
-			<file>createAProject.xml</file>
-			<description>Create a new project in asana</description>
-		</component>
-		<component name="deleteAProject">
-			<file>deleteAProject.xml</file>
-			<description>Delete a project in asana.</description>
-		</component>
-		<component name="getProjectSections">
-			<file>getProjectSections.xml</file>
-			<description>Get project sections.</description>
-		</component>
-		<component name="getProjectTasks">
-			<file>getProjectTasks.xml</file>
-			<description>Get project tasks.</description>
-		</component>
-		<component name="getSingleProject">
-			<file>getSingleProject.xml</file>
-			<description>Get a single project</description>
-		</component>
-		<component name="queryForProjects">
-			<file>queryForProjects.xml</file>
-			<description>Request for projects</description>
-		</component>
-		<component name="updateAProject">
-			<file>updateAProject.xml</file>
-			<description>Updates an existing project</description>
-		</component>
-	</subComponents>
+    <subComponents>
+        <component name="createAProject">
+            <file>createAProject.xml</file>
+            <description>Create a new project in asana</description>
+        </component>
+        <component name="deleteAProject">
+            <file>deleteAProject.xml</file>
+            <description>Delete a project in asana.</description>
+        </component>
+        <component name="getProjectSections">
+            <file>getProjectSections.xml</file>
+            <description>Get project sections.</description>
+        </component>
+        <component name="getProjectTasks">
+            <file>getProjectTasks.xml</file>
+            <description>Get project tasks.</description>
+        </component>
+        <component name="getSingleProject">
+            <file>getSingleProject.xml</file>
+            <description>Get a single project</description>
+        </component>
+        <component name="queryForProjects">
+            <file>queryForProjects.xml</file>
+            <description>Request for projects</description>
+        </component>
+        <component name="updateAProject">
+            <file>updateAProject.xml</file>
+            <description>Updates an existing project</description>
+        </component>
+    </subComponents>
 </component>

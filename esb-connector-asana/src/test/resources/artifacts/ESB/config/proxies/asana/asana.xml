@@ -16,330 +16,325 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-
 <proxy xmlns="http://ws.apache.org/ns/synapse"
        name="asana"
        transports="http,https"
        statistics="disable"
        trace="disable"
        startOnLoad="true">
-   <target>
-      <inSequence>
-         <property name="apiUrl" expression="json-eval($.apiUrl)"/>
-         <property name="apiVersion" expression="json-eval($.apiVersion)"/>
-         <property name="refreshToken" expression="json-eval($.refreshToken)"/>
-         <property name="clientId" expression="json-eval($.clientId)"/>
-         <property name="clientSecret" expression="json-eval($.clientSecret)"/>
-         <property name="grantType" expression="json-eval($.grantType)"/>
-         <property name="redirectUri" expression="json-eval($.redirectUri)"/>
-		 
-         <property name="taskId" expression="json-eval($.taskId)"/>
-         <property name="tag" expression="json-eval($.tag)"/>
-		 <property name="followers" expression="json-eval($.followers)"/>
-		 <property name="workspace" expression="json-eval($.workspace)"/>
-         <property name="user" expression="json-eval($.user)"/>
-		 <property name="parent" expression="json-eval($.parent)"/>
-		 <property name="text" expression="json-eval($.text)"/>
-		 <property name="notes" expression="json-eval($.notes)"/>
-         <property name="name" expression="json-eval($.name)"/>
-		 <property name="assignee" expression="json-eval($.assignee)"/>
-		 <property name="projectId" expression="json-eval($.projectId)"/>
-		 <property name="tagId" expression="json-eval($.tagId)"/>
-		 <property name="userId" expression="json-eval($.userId)"/>
-		 <property name="resource" expression="json-eval($.resource)"/>
-         <property name="sync" expression="json-eval($.sync)"/>
-		 <property name="attachmentId" expression="json-eval($.attachmentId)"/>
-		 <property name="type" expression="json-eval($.type)"/>
-         <property name="query" expression="json-eval($.query)"/>
-		 <property name="project" expression="json-eval($.project)"/>
-		 <property name="count" expression="json-eval($.count)"/>
-		 <property name="storyId" expression="json-eval($.storyId)"/>
-		 <property name="registryPath" expression="json-eval($.registryPath)"/>
-         <property name="accessToken" expression="json-eval($.accessToken)"/>
-         <property name="completedSince" expression="json-eval($.completedSince)"/>
-         <property name="modifiedSince" expression="json-eval($.modifiedSince)"/>
-
-		 
-		 <asana.init>
-            <apiUrl>{$ctx:apiUrl}</apiUrl>
-            <apiVersion>{$ctx:apiVersion}</apiVersion>
-			<accessToken>{$ctx:accessToken}</accessToken>
-            <refreshToken>{$ctx:refreshToken}</refreshToken>
-            <clientId>{$ctx:clientId}</clientId>
-            <clientSecret>{$ctx:clientSecret}</clientSecret>
-            <grantType>{$ctx:grantType}</grantType>
-            <redirectUri>{$ctx:redirectUri}</redirectUri>
-            <registryPath>{$ctx:registryPath}</registryPath>
-         </asana.init>
-		 
-		 <switch source="get-property('transport', 'Action')">
-			<case regex="urn:getSingleAttachment">
-				<asana.getSingleAttachment>
-					<attachmentId>{$ctx:attachmentId}</attachmentId>
-				</asana.getSingleAttachment>
-            </case>
-			<case regex="urn:getAllAttachments">
-				<asana.getAllAttachments>
-					<taskId>{$ctx:taskId}</taskId>
-				</asana.getAllAttachments>
-            </case>
-			<case regex="urn:createAProject">
-				<asana.createAProject>
-					<notes>{$ctx:notes}</notes>
-					<name>{$ctx:name}</name>
-					<workspace>{$ctx:workspace}</workspace>
-				</asana.createAProject>
-            </case>	
-			<case regex="urn:getSingleProject">
-				<asana.getSingleProject>
-					<projectId>{$ctx:projectId}</projectId>
-				</asana.getSingleProject>
-            </case>
-			<case regex="urn:updateAProject">
-				<asana.updateAProject>
-					<projectId>{$ctx:projectId}</projectId>
-					<name>{$ctx:name}</name>
-					<notes>{$ctx:notes}</notes>
-				</asana.updateAProject>
-            </case>
-			<case regex="urn:deleteAProject">
-				<asana.deleteAProject>
-					<projectId>{$ctx:projectId}</projectId>
-				</asana.deleteAProject>
-            </case>
-			<case regex="urn:queryForProjects">
-				<asana.queryForProjects>
-					<workspace>{$ctx:workspace}</workspace>
-				</asana.queryForProjects>
-            </case>
-			<case regex="urn:getProjectSections">
-				<asana.getProjectSections>
-					<projectId>{$ctx:projectId}</projectId>
-				</asana.getProjectSections>
-            </case>
-			<case regex="urn:createATag">
-				<asana.createATag>
-					<name>{$ctx:name}</name>
-					<workspace>{$ctx:workspace}</workspace>
-				</asana.createATag>
-            </case>
-			<case regex="urn:getASingleTag">
-				<asana.getASingleTag>
-					<tagId>{$ctx:tagId}</tagId>
-				</asana.getASingleTag>
-            </case>
-			<case regex="urn:updateATag">
-				<asana.updateATag>
-					<tagId>{$ctx:tagId}</tagId>
-					<name>{$ctx:name}</name>
-				</asana.updateATag>
-            </case>
-			<case regex="urn:queryForTags">
-				<asana.queryForTags>
-					<workspace>{$ctx:workspace}</workspace>
-				</asana.queryForTags>
-            </case>
-			<case regex="urn:createATask">
-				<asana.createATask>
-					<assignee>{$ctx:assignee}</assignee>
-					<notes>{$ctx:notes}</notes>
-					<followers>{$ctx:followers}</followers>
-					<name>{$ctx:name}</name>
-					<workspace>{$ctx:workspace}</workspace>
-				</asana.createATask>
-            </case>
-			<case regex="urn:getATask">
-				<asana.getATask>
-					<taskId>{$ctx:taskId}</taskId>
-				</asana.getATask>
-            </case>
-			<case regex="urn:updateATask">
-				<asana.updateATask>
-					<taskId>{$ctx:taskId}</taskId>
-					<assignee>{$ctx:assignee}</assignee>
-					<notes>{$ctx:notes}</notes>
-					<name>{$ctx:name}</name>
-				</asana.updateATask>
-            </case>
-			<case regex="urn:queryForTasks">
-				<asana.queryForTasks>
-					<workspace>{$ctx:workspace}</workspace>
-					<assignee>{$ctx:assignee}</assignee>
-					<completedSince>{$ctx:completedSince}</completedSince>
-					<modifiedSince>{$ctx:modifiedSince}</modifiedSince>
-				</asana.queryForTasks>
-            </case>
-			<case regex="urn:createASubtask">
-				<asana.createASubtask>
-					<taskId>{$ctx:taskId}</taskId>
-					<assignee>{$ctx:assignee}</assignee>
-					<notes>{$ctx:notes}</notes>
-					<name>{$ctx:name}</name>
-					<followers>{$ctx:followers}</followers>
-				</asana.createASubtask>
-			</case>
-			<case regex="urn:getAllSubtasks">
-				<asana.getAllSubtasks>
-					<taskId>{$ctx:taskId}</taskId>
-				</asana.getAllSubtasks>
-			</case>
-			<case regex="urn:changeParentOfTask">
-				<asana.changeParentOfTask>
-					<taskId>{$ctx:taskId}</taskId>
-					<parent>{$ctx:parent}</parent>
-				</asana.changeParentOfTask>
-			</case>
-			<case regex="urn:deleteATask">
-				<asana.deleteATask>
-					<taskId>{$ctx:taskId}</taskId>
-				</asana.deleteATask>
-            </case>
-			<case regex="urn:createACommentToTask">
-				<asana.createACommentToTask>
-					<taskId>{$ctx:taskId}</taskId>
-					<text>{$ctx:text}</text>
-				</asana.createACommentToTask>
-			</case>
-			<case regex="urn:getAllStoriesOfTask">
-				<asana.getAllStoriesOfTask>
-					<taskId>{$ctx:taskId}</taskId>
-				</asana.getAllStoriesOfTask>
-			</case>
-			<case regex="urn:createFollowersToTask">
-				<asana.createFollowersToTask>
-					<taskId>{$ctx:taskId}</taskId>
-					<followers>{$ctx:followers}</followers>
-				</asana.createFollowersToTask>
-			</case>
-			<case regex="urn:removeFollowersFromTask">
-				<asana.removeFollowersFromTask>
-					<taskId>{$ctx:taskId}</taskId>
-					<followers>{$ctx:followers}</followers>
-				</asana.removeFollowersFromTask>
-			</case>
-			<case regex="urn:addATaskToProject">
-				<asana.addATaskToProject>
-					<taskId>{$ctx:taskId}</taskId>
-					<project>{$ctx:project}</project>
-					<insertAfter>{$ctx:insertAfter}</insertAfter>
-					<insertBefore>{$ctx:insertBefore}</insertBefore>
-					<section>{$ctx:section}</section>
-				</asana.addATaskToProject>
-			</case>
-			<case regex="urn:getProjectTasks">
-				<asana.getProjectTasks>
-					<projectId>{$ctx:projectId}</projectId>
-				</asana.getProjectTasks>
-            </case>
-			<case regex="urn:getProjectDetailsOfTask">
-				<asana.getProjectDetailsOfTask>
-					<taskId>{$ctx:taskId}</taskId>
-				</asana.getProjectDetailsOfTask>
-			</case>
-			<case regex="urn:removeATaskFromProject">
-				<asana.removeATaskFromProject>
-					<taskId>{$ctx:taskId}</taskId>
-					<project>{$ctx:project}</project>
-				</asana.removeATaskFromProject>
-			</case>
-			<case regex="urn:commentingOnAnObject">
-				<asana.commentingOnAnObject>
-					<taskId>{$ctx:taskId}</taskId>
-					<text>{$ctx:text}</text>
-				</asana.commentingOnAnObject>
-            </case>
-			<case regex="urn:getStoriesOnObject">
-				<asana.getStoriesOnObject>
-					<taskId>{$ctx:taskId}</taskId>
-				</asana.getStoriesOnObject>
-            </case>
-			<case regex="urn:getASingleStory">
-				<asana.getASingleStory>
-					<storyId>{$ctx:storyId}</storyId>
-				</asana.getASingleStory>
-			</case>
-			<case regex="urn:createATagToTask">
-				<asana.createATagToTask>
-					<taskId>{$ctx:taskId}</taskId>
-					<tag>{$ctx:tag}</tag>
-				</asana.createATagToTask>
-			</case>
-			<case regex="urn:getTagsOfTask">
-				<asana.getTagsOfTask>
-					<taskId>{$ctx:taskId}</taskId>
-				</asana.getTagsOfTask>
-			</case>
-			<case regex="urn:getTasksWithTag">
-				<asana.getTasksWithTag>
-					<tagId>{$ctx:tagId}</tagId>
-				</asana.getTasksWithTag>
-            </case>
-			<case regex="urn:removeATagFromTask">
-				<asana.removeATagFromTask>
-					<taskId>{$ctx:taskId}</taskId>
-					<tag>{$ctx:tag}</tag>
-				</asana.removeATagFromTask>	
-			</case>
-			<case regex="urn:query">
-				<asana.query>
-					<workspace>{$ctx:workspace}</workspace>
-					<type>{$ctx:type}</type>
-					<query>{$ctx:query}</query>
-					<count>{$ctx:count}</count>
-				</asana.query>
-            </case>
-			<case regex="urn:getAllWorkspaces">
-				<asana.getAllWorkspaces/>
-            </case>
-			<case regex="urn:getAWorkspace">
-				<asana.getAWorkspace>
-					<workspace>{$ctx:workspace}</workspace>
-				</asana.getAWorkspace>
-            </case>
-			<case regex="urn:updateAWorkspace">
-				<asana.updateAWorkspace>
-					<workspace>{$ctx:workspace}</workspace>
-					<name>{$ctx:name}</name>
-				</asana.updateAWorkspace>
-            </case>
-			<case regex="urn:addUser">
-				<asana.addUser>
-					<workspace>{$ctx:workspace}</workspace>
-					<user>{$ctx:user}</user>
-				</asana.addUser>
-            </case>
-			<case regex="urn:typeaheadSearch">
-				<asana.typeaheadSearch>
-					<workspace>{$ctx:workspace}</workspace>
-					<type>{$ctx:type}</type>
-					<query>{$ctx:query}</query>
-					<count>{$ctx:count}</count>
-				</asana.typeaheadSearch>
-            </case>
-			<case regex="urn:getAllUsers">
-				<asana.getAllUsers>
-					<workspace>{$ctx:workspace}</workspace>
-				</asana.getAllUsers>
-            </case>
-			<case regex="urn:getASingleUser">
-				<asana.getASingleUser>
-					<userId>{$ctx:userId}</userId>
-				 </asana.getASingleUser>
-            </case>
-			<case regex="urn:getEventsOnResource">
-				<asana.getEventsOnResource>
-					<resource>{$ctx:resource}</resource>
-					<sync>{$ctx:sync}</sync>
-				</asana.getEventsOnResource>
-            </case>
-			</switch>
-        <respond />
-      </inSequence>
-      <outSequence>
-         <log />
-         <send />
-      </outSequence>
-   </target>
-   <description />
+    <target>
+        <inSequence>
+            <property name="apiUrl" expression="json-eval($.apiUrl)"/>
+            <property name="apiVersion" expression="json-eval($.apiVersion)"/>
+            <property name="refreshToken" expression="json-eval($.refreshToken)"/>
+            <property name="clientId" expression="json-eval($.clientId)"/>
+            <property name="clientSecret" expression="json-eval($.clientSecret)"/>
+            <property name="grantType" expression="json-eval($.grantType)"/>
+            <property name="redirectUri" expression="json-eval($.redirectUri)"/>
+            <property name="registryPath" expression="json-eval($.registryPath)"/>
+            <property name="accessToken" expression="json-eval($.accessToken)"/>
+            <property name="taskId" expression="json-eval($.taskId)"/>
+            <property name="tag" expression="json-eval($.tag)"/>
+            <property name="followers" expression="json-eval($.followers)"/>
+            <property name="workspace" expression="json-eval($.workspace)"/>
+            <property name="user" expression="json-eval($.user)"/>
+            <property name="parent" expression="json-eval($.parent)"/>
+            <property name="text" expression="json-eval($.text)"/>
+            <property name="notes" expression="json-eval($.notes)"/>
+            <property name="name" expression="json-eval($.name)"/>
+            <property name="assignee" expression="json-eval($.assignee)"/>
+            <property name="projectId" expression="json-eval($.projectId)"/>
+            <property name="tagId" expression="json-eval($.tagId)"/>
+            <property name="userId" expression="json-eval($.userId)"/>
+            <property name="resource" expression="json-eval($.resource)"/>
+            <property name="sync" expression="json-eval($.sync)"/>
+            <property name="attachmentId" expression="json-eval($.attachmentId)"/>
+            <property name="type" expression="json-eval($.type)"/>
+            <property name="query" expression="json-eval($.query)"/>
+            <property name="project" expression="json-eval($.project)"/>
+            <property name="count" expression="json-eval($.count)"/>
+            <property name="storyId" expression="json-eval($.storyId)"/>
+            <property name="completedSince" expression="json-eval($.completedSince)"/>
+            <property name="modifiedSince" expression="json-eval($.modifiedSince)"/>
+            <asana.init>
+                <apiUrl>{$ctx:apiUrl}</apiUrl>
+                <apiVersion>{$ctx:apiVersion}</apiVersion>
+                <accessToken>{$ctx:accessToken}</accessToken>
+                <refreshToken>{$ctx:refreshToken}</refreshToken>
+                <clientId>{$ctx:clientId}</clientId>
+                <clientSecret>{$ctx:clientSecret}</clientSecret>
+                <grantType>{$ctx:grantType}</grantType>
+                <redirectUri>{$ctx:redirectUri}</redirectUri>
+                <registryPath>{$ctx:registryPath}</registryPath>
+            </asana.init>
+            <switch source="get-property('transport', 'Action')">
+                <case regex="urn:getSingleAttachment">
+                    <asana.getSingleAttachment>
+                        <attachmentId>{$ctx:attachmentId}</attachmentId>
+                    </asana.getSingleAttachment>
+                </case>
+                <case regex="urn:getAllAttachments">
+                    <asana.getAllAttachments>
+                        <taskId>{$ctx:taskId}</taskId>
+                    </asana.getAllAttachments>
+                </case>
+                <case regex="urn:createAProject">
+                    <asana.createAProject>
+                        <notes>{$ctx:notes}</notes>
+                        <name>{$ctx:name}</name>
+                        <workspace>{$ctx:workspace}</workspace>
+                    </asana.createAProject>
+                </case>
+                <case regex="urn:getSingleProject">
+                    <asana.getSingleProject>
+                        <projectId>{$ctx:projectId}</projectId>
+                    </asana.getSingleProject>
+                </case>
+                <case regex="urn:updateAProject">
+                    <asana.updateAProject>
+                        <projectId>{$ctx:projectId}</projectId>
+                        <name>{$ctx:name}</name>
+                        <notes>{$ctx:notes}</notes>
+                    </asana.updateAProject>
+                </case>
+                <case regex="urn:deleteAProject">
+                    <asana.deleteAProject>
+                        <projectId>{$ctx:projectId}</projectId>
+                    </asana.deleteAProject>
+                </case>
+                <case regex="urn:queryForProjects">
+                    <asana.queryForProjects>
+                        <workspace>{$ctx:workspace}</workspace>
+                    </asana.queryForProjects>
+                </case>
+                <case regex="urn:getProjectSections">
+                    <asana.getProjectSections>
+                        <projectId>{$ctx:projectId}</projectId>
+                    </asana.getProjectSections>
+                </case>
+                <case regex="urn:createATag">
+                    <asana.createATag>
+                        <name>{$ctx:name}</name>
+                        <workspace>{$ctx:workspace}</workspace>
+                    </asana.createATag>
+                </case>
+                <case regex="urn:getASingleTag">
+                    <asana.getASingleTag>
+                        <tagId>{$ctx:tagId}</tagId>
+                    </asana.getASingleTag>
+                </case>
+                <case regex="urn:updateATag">
+                    <asana.updateATag>
+                        <tagId>{$ctx:tagId}</tagId>
+                        <name>{$ctx:name}</name>
+                    </asana.updateATag>
+                </case>
+                <case regex="urn:queryForTags">
+                    <asana.queryForTags>
+                        <workspace>{$ctx:workspace}</workspace>
+                    </asana.queryForTags>
+                </case>
+                <case regex="urn:createATask">
+                    <asana.createATask>
+                        <assignee>{$ctx:assignee}</assignee>
+                        <notes>{$ctx:notes}</notes>
+                        <followers>{$ctx:followers}</followers>
+                        <name>{$ctx:name}</name>
+                        <workspace>{$ctx:workspace}</workspace>
+                    </asana.createATask>
+                </case>
+                <case regex="urn:getATask">
+                    <asana.getATask>
+                        <taskId>{$ctx:taskId}</taskId>
+                    </asana.getATask>
+                </case>
+                <case regex="urn:updateATask">
+                    <asana.updateATask>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <assignee>{$ctx:assignee}</assignee>
+                        <notes>{$ctx:notes}</notes>
+                        <name>{$ctx:name}</name>
+                    </asana.updateATask>
+                </case>
+                <case regex="urn:queryForTasks">
+                    <asana.queryForTasks>
+                        <workspace>{$ctx:workspace}</workspace>
+                        <assignee>{$ctx:assignee}</assignee>
+                        <completedSince>{$ctx:completedSince}</completedSince>
+                        <modifiedSince>{$ctx:modifiedSince}</modifiedSince>
+                    </asana.queryForTasks>
+                </case>
+                <case regex="urn:createASubtask">
+                    <asana.createASubtask>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <assignee>{$ctx:assignee}</assignee>
+                        <notes>{$ctx:notes}</notes>
+                        <name>{$ctx:name}</name>
+                        <followers>{$ctx:followers}</followers>
+                    </asana.createASubtask>
+                </case>
+                <case regex="urn:getAllSubtasks">
+                    <asana.getAllSubtasks>
+                        <taskId>{$ctx:taskId}</taskId>
+                    </asana.getAllSubtasks>
+                </case>
+                <case regex="urn:changeParentOfTask">
+                    <asana.changeParentOfTask>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <parent>{$ctx:parent}</parent>
+                    </asana.changeParentOfTask>
+                </case>
+                <case regex="urn:deleteATask">
+                    <asana.deleteATask>
+                        <taskId>{$ctx:taskId}</taskId>
+                    </asana.deleteATask>
+                </case>
+                <case regex="urn:createACommentToTask">
+                    <asana.createACommentToTask>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <text>{$ctx:text}</text>
+                    </asana.createACommentToTask>
+                </case>
+                <case regex="urn:getAllStoriesOfTask">
+                    <asana.getAllStoriesOfTask>
+                        <taskId>{$ctx:taskId}</taskId>
+                    </asana.getAllStoriesOfTask>
+                </case>
+                <case regex="urn:createFollowersToTask">
+                    <asana.createFollowersToTask>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <followers>{$ctx:followers}</followers>
+                    </asana.createFollowersToTask>
+                </case>
+                <case regex="urn:removeFollowersFromTask">
+                    <asana.removeFollowersFromTask>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <followers>{$ctx:followers}</followers>
+                    </asana.removeFollowersFromTask>
+                </case>
+                <case regex="urn:addATaskToProject">
+                    <asana.addATaskToProject>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <project>{$ctx:project}</project>
+                        <insertAfter>{$ctx:insertAfter}</insertAfter>
+                        <insertBefore>{$ctx:insertBefore}</insertBefore>
+                        <section>{$ctx:section}</section>
+                    </asana.addATaskToProject>
+                </case>
+                <case regex="urn:getProjectTasks">
+                    <asana.getProjectTasks>
+                        <projectId>{$ctx:projectId}</projectId>
+                    </asana.getProjectTasks>
+                </case>
+                <case regex="urn:getProjectDetailsOfTask">
+                    <asana.getProjectDetailsOfTask>
+                        <taskId>{$ctx:taskId}</taskId>
+                    </asana.getProjectDetailsOfTask>
+                </case>
+                <case regex="urn:removeATaskFromProject">
+                    <asana.removeATaskFromProject>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <project>{$ctx:project}</project>
+                    </asana.removeATaskFromProject>
+                </case>
+                <case regex="urn:commentingOnAnObject">
+                    <asana.commentingOnAnObject>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <text>{$ctx:text}</text>
+                    </asana.commentingOnAnObject>
+                </case>
+                <case regex="urn:getStoriesOnObject">
+                    <asana.getStoriesOnObject>
+                        <taskId>{$ctx:taskId}</taskId>
+                    </asana.getStoriesOnObject>
+                </case>
+                <case regex="urn:getASingleStory">
+                    <asana.getASingleStory>
+                        <storyId>{$ctx:storyId}</storyId>
+                    </asana.getASingleStory>
+                </case>
+                <case regex="urn:createATagToTask">
+                    <asana.createATagToTask>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <tag>{$ctx:tag}</tag>
+                    </asana.createATagToTask>
+                </case>
+                <case regex="urn:getTagsOfTask">
+                    <asana.getTagsOfTask>
+                        <taskId>{$ctx:taskId}</taskId>
+                    </asana.getTagsOfTask>
+                </case>
+                <case regex="urn:getTasksWithTag">
+                    <asana.getTasksWithTag>
+                        <tagId>{$ctx:tagId}</tagId>
+                    </asana.getTasksWithTag>
+                </case>
+                <case regex="urn:removeATagFromTask">
+                    <asana.removeATagFromTask>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <tag>{$ctx:tag}</tag>
+                    </asana.removeATagFromTask>
+                </case>
+                <case regex="urn:query">
+                    <asana.query>
+                        <workspace>{$ctx:workspace}</workspace>
+                        <type>{$ctx:type}</type>
+                        <query>{$ctx:query}</query>
+                        <count>{$ctx:count}</count>
+                    </asana.query>
+                </case>
+                <case regex="urn:getAllWorkspaces">
+                    <asana.getAllWorkspaces/>
+                </case>
+                <case regex="urn:getAWorkspace">
+                    <asana.getAWorkspace>
+                        <workspace>{$ctx:workspace}</workspace>
+                    </asana.getAWorkspace>
+                </case>
+                <case regex="urn:updateAWorkspace">
+                    <asana.updateAWorkspace>
+                        <workspace>{$ctx:workspace}</workspace>
+                        <name>{$ctx:name}</name>
+                    </asana.updateAWorkspace>
+                </case>
+                <case regex="urn:addUser">
+                    <asana.addUser>
+                        <workspace>{$ctx:workspace}</workspace>
+                        <user>{$ctx:user}</user>
+                    </asana.addUser>
+                </case>
+                <case regex="urn:typeaheadSearch">
+                    <asana.typeaheadSearch>
+                        <workspace>{$ctx:workspace}</workspace>
+                        <type>{$ctx:type}</type>
+                        <query>{$ctx:query}</query>
+                        <count>{$ctx:count}</count>
+                    </asana.typeaheadSearch>
+                </case>
+                <case regex="urn:getAllUsers">
+                    <asana.getAllUsers>
+                        <workspace>{$ctx:workspace}</workspace>
+                    </asana.getAllUsers>
+                </case>
+                <case regex="urn:getASingleUser">
+                    <asana.getASingleUser>
+                        <userId>{$ctx:userId}</userId>
+                    </asana.getASingleUser>
+                </case>
+                <case regex="urn:getEventsOnResource">
+                    <asana.getEventsOnResource>
+                        <resource>{$ctx:resource}</resource>
+                        <sync>{$ctx:sync}</sync>
+                    </asana.getEventsOnResource>
+                </case>
+            </switch>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
 </proxy>  
          

@@ -17,10 +17,12 @@
   ~  under the License.
 -->
 <component name="asana_events" type="synapse/template">
-	<subComponents>
-		<component name="getEventsOnResource">
-			<file>getEventsOnResource.xml</file>
-			<description>Get all events on a task or project for a sync token received from the last request.</description>
-		</component>
-	</subComponents>
+    <subComponents>
+        <component name="getEventsOnResource">
+            <file>getEventsOnResource.xml</file>
+            <description>
+                Get all events on a task or project for a sync token received from the last request.
+            </description>
+        </component>
+    </subComponents>
 </component>
