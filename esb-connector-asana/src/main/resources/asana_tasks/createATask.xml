@@ -42,7 +42,7 @@
         </payloadFactory>
         <script language="js">
             <![CDATA[
-		        var assignee = mc.getProperty('uri.var.assignee');
+		var assignee = mc.getProperty('uri.var.assignee');
                 var notes = mc.getProperty('uri.var.notes');
                 var followers = mc.getProperty('uri.var.followers');
                 var name = mc.getProperty('uri.var.name');
