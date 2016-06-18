@@ -18,16 +18,16 @@
 -->
 <component name="asana_stories" type="synapse/template">
     <subComponents>
-        <component name="getASingleStory">
-            <file>getASingleStory.xml</file>
+        <component name="getSingleStory">
+            <file>getSingleStory.xml</file>
             <description>Get a single story</description>
         </component>
         <component name="getStoriesOnObject">
             <file>getStoriesOnObject.xml</file>
             <description>Get stories on object</description>
         </component>
-        <component name="commentingOnAnObject">
-            <file>commentingOnAnObject.xml</file>
+        <component name="commentOnObject">
+            <file>commentOnObject.xml</file>
             <description>Commenting on an object</description>
         </component>
     </subComponents>

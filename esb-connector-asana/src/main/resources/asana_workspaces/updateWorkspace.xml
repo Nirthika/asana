@@ -16,10 +16,12 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="updateATag">
-    <parameter name="tagId" description="a String containing the tag id."/>
-    <parameter name="name" description="a String containing the name of tag."/>
+<template xmlns="http://ws.apache.org/ns/synapse" name="updateWorkspace">
+    <parameter name="workspace" description="Workspace id to be retrieved."/>
+    <parameter name="name" description="a String containing the name of the workspace"/>
     <sequence>
+        <property name="uri.var.workspace" expression="$func:workspace"/>
+        <property name="uri.var.name" expression="$func:name"/>
         <payloadFactory media-type="json">
             <format>
                 {
@@ -32,13 +34,12 @@
                 <arg evaluator="xml" expression="$func:name"/>
             </args>
         </payloadFactory>
-        <property name="uri.var.tagId" expression="$func:tagId"/>
         <property name="messageType" value="application/json" scope="axis2"/>
         <property name="Accept-Encoding" action="remove" scope="transport"/>
         <call>
             <endpoint>
-                <http method="PUT"
-                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tags/{uri.var.tagId}"/>
+                <http method="put"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/workspaces/{uri.var.workspace}"/>
             </endpoint>
         </call>
     </sequence>

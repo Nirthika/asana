@@ -16,14 +16,14 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="getASingleStory">
-    <parameter name="storyId" description="a String containing the story id."/>
+<template xmlns="http://ws.apache.org/ns/synapse" name="deleteProject">
+    <parameter name="projectId" description="a String containing the project id."/>
     <sequence>
-        <property name="uri.var.storyId" expression="$func:storyId"/>
+        <property name="uri.var.projectId" expression="$func:projectId"/>
         <call>
             <endpoint>
-                <http method="GET"
-                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/stories/{uri.var.storyId}"/>
+                <http method="DELETE"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/projects/{uri.var.projectId}"/>
             </endpoint>
         </call>
     </sequence>

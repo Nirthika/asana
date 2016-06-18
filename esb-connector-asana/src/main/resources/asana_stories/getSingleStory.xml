@@ -16,14 +16,14 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="getASingleTag">
-    <parameter name="tagId" description="a String containing the tag id."/>
+<template xmlns="http://ws.apache.org/ns/synapse" name="getSingleStory">
+    <parameter name="storyId" description="a String containing the story id."/>
     <sequence>
-        <property name="uri.var.tagId" expression="$func:tagId"/>
+        <property name="uri.var.storyId" expression="$func:storyId"/>
         <call>
             <endpoint>
                 <http method="GET"
-                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tags/{uri.var.tagId}"/>
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/stories/{uri.var.storyId}"/>
             </endpoint>
         </call>
     </sequence>

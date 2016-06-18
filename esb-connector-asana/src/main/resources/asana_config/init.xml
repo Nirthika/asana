@@ -108,7 +108,7 @@
                         mc.setProperty("INTERVAL_TIME", timeTaken);
                     ]]>
                 </script>
-                <!--If the access token is not in the registry(first call) or time interval less than 50 minutes , then get a new access token by calling getAccessTokenByRefreshToken method and store the time into registry-->
+                <!--If the access token is not in the registry(first call) or time interval greater than 50 minutes , then get a new access token by calling getAccessTokenByRefreshToken method and store the time into registry-->
                 <filter source="$ctx:INTERVAL_TIME &gt;$ctx:uri.var.intervalTime or $ctx:uri.var.accessToken=''"
                         regex="true">
                     <then>

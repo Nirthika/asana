@@ -16,7 +16,7 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="createACommentToTask">
+<template xmlns="http://ws.apache.org/ns/synapse" name="createCommentToTask">
     <parameter name="taskId" description="The task Id to change the parent of "/>
     <parameter name="text" description="The plain text of the comment to add."/>
     <sequence>

@@ -18,16 +18,16 @@
 -->
 <component name="asana_tags" type="synapse/template">
     <subComponents>
-        <component name="createATag">
-            <file>createATag.xml</file>
+        <component name="createTag">
+            <file>createTag.xml</file>
             <description>creates a tag</description>
         </component>
-        <component name="getASingleTag">
-            <file>getASingleTag.xml</file>
+        <component name="getSingleTag">
+            <file>getSingleTag.xml</file>
             <description>get a single tag</description>
         </component>
-        <component name="updateATag">
-            <file>updateATag.xml</file>
+        <component name="updateTag">
+            <file>updateTag.xml</file>
             <description>update a tag</description>
         </component>
         <component name="getTasksWithTag">

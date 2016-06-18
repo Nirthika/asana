@@ -16,21 +16,21 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="removeATaskFromProject">
+<template xmlns="http://ws.apache.org/ns/synapse" name="createTagToTask">
     <parameter name="taskId" description="Task id to be retrieved."/>
-    <parameter name="project" description="The project to remove the task from."/>
+    <parameter name="tag" description="Tag id be retrieved"/>
     <sequence>
         <property name="uri.var.taskId" expression="$func:taskId"/>
         <payloadFactory media-type="json">
             <format>
                 {
                     "data":{
-                        "project":"$1"
+                        "tag":"$1"
                     }
                 }
             </format>
             <args>
-                <arg evaluator="xml" expression="$func:project"/>
+                <arg evaluator="xml" expression="$func:tag"/>
             </args>
         </payloadFactory>
         <property name="messageType" value="application/json" scope="axis2"/>
@@ -38,7 +38,7 @@
         <call>
             <endpoint>
                 <http method="post"
-                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}/removeProject"/>
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}/addTag"/>
             </endpoint>
         </call>
     </sequence>

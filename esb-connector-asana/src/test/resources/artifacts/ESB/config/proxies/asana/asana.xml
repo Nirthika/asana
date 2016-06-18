@@ -78,29 +78,29 @@
                         <taskId>{$ctx:taskId}</taskId>
                     </asana.getAllAttachments>
                 </case>
-                <case regex="urn:createAProject">
-                    <asana.createAProject>
+                <case regex="urn:createProject">
+                    <asana.createProject>
                         <notes>{$ctx:notes}</notes>
                         <name>{$ctx:name}</name>
                         <workspace>{$ctx:workspace}</workspace>
-                    </asana.createAProject>
+                    </asana.createProject>
                 </case>
                 <case regex="urn:getSingleProject">
                     <asana.getSingleProject>
                         <projectId>{$ctx:projectId}</projectId>
                     </asana.getSingleProject>
                 </case>
-                <case regex="urn:updateAProject">
-                    <asana.updateAProject>
+                <case regex="urn:updateProject">
+                    <asana.updateProject>
                         <projectId>{$ctx:projectId}</projectId>
                         <name>{$ctx:name}</name>
                         <notes>{$ctx:notes}</notes>
-                    </asana.updateAProject>
+                    </asana.updateProject>
                 </case>
-                <case regex="urn:deleteAProject">
-                    <asana.deleteAProject>
+                <case regex="urn:deleteProject">
+                    <asana.deleteProject>
                         <projectId>{$ctx:projectId}</projectId>
-                    </asana.deleteAProject>
+                    </asana.deleteProject>
                 </case>
                 <case regex="urn:queryForProjects">
                     <asana.queryForProjects>
@@ -112,49 +112,49 @@
                         <projectId>{$ctx:projectId}</projectId>
                     </asana.getProjectSections>
                 </case>
-                <case regex="urn:createATag">
-                    <asana.createATag>
+                <case regex="urn:createTag">
+                    <asana.createTag>
                         <name>{$ctx:name}</name>
                         <workspace>{$ctx:workspace}</workspace>
-                    </asana.createATag>
+                    </asana.createTag>
                 </case>
-                <case regex="urn:getASingleTag">
-                    <asana.getASingleTag>
+                <case regex="urn:getSingleTag">
+                    <asana.getSingleTag>
                         <tagId>{$ctx:tagId}</tagId>
-                    </asana.getASingleTag>
+                    </asana.getSingleTag>
                 </case>
-                <case regex="urn:updateATag">
-                    <asana.updateATag>
+                <case regex="urn:updateTag">
+                    <asana.updateTag>
                         <tagId>{$ctx:tagId}</tagId>
                         <name>{$ctx:name}</name>
-                    </asana.updateATag>
+                    </asana.updateTag>
                 </case>
                 <case regex="urn:queryForTags">
                     <asana.queryForTags>
                         <workspace>{$ctx:workspace}</workspace>
                     </asana.queryForTags>
                 </case>
-                <case regex="urn:createATask">
-                    <asana.createATask>
+                <case regex="urn:createTask">
+                    <asana.createTask>
                         <assignee>{$ctx:assignee}</assignee>
                         <notes>{$ctx:notes}</notes>
                         <followers>{$ctx:followers}</followers>
                         <name>{$ctx:name}</name>
                         <workspace>{$ctx:workspace}</workspace>
-                    </asana.createATask>
+                    </asana.createTask>
                 </case>
-                <case regex="urn:getATask">
-                    <asana.getATask>
+                <case regex="urn:getTask">
+                    <asana.getTask>
                         <taskId>{$ctx:taskId}</taskId>
-                    </asana.getATask>
+                    </asana.getTask>
                 </case>
-                <case regex="urn:updateATask">
-                    <asana.updateATask>
+                <case regex="urn:updateTask">
+                    <asana.updateTask>
                         <taskId>{$ctx:taskId}</taskId>
                         <assignee>{$ctx:assignee}</assignee>
                         <notes>{$ctx:notes}</notes>
                         <name>{$ctx:name}</name>
-                    </asana.updateATask>
+                    </asana.updateTask>
                 </case>
                 <case regex="urn:queryForTasks">
                     <asana.queryForTasks>
@@ -164,14 +164,14 @@
                         <modifiedSince>{$ctx:modifiedSince}</modifiedSince>
                     </asana.queryForTasks>
                 </case>
-                <case regex="urn:createASubtask">
-                    <asana.createASubtask>
+                <case regex="urn:createSubtask">
+                    <asana.createSubtask>
                         <taskId>{$ctx:taskId}</taskId>
                         <assignee>{$ctx:assignee}</assignee>
                         <notes>{$ctx:notes}</notes>
                         <name>{$ctx:name}</name>
                         <followers>{$ctx:followers}</followers>
-                    </asana.createASubtask>
+                    </asana.createSubtask>
                 </case>
                 <case regex="urn:getAllSubtasks">
                     <asana.getAllSubtasks>
@@ -184,16 +184,16 @@
                         <parent>{$ctx:parent}</parent>
                     </asana.changeParentOfTask>
                 </case>
-                <case regex="urn:deleteATask">
-                    <asana.deleteATask>
+                <case regex="urn:deleteTask">
+                    <asana.deleteTask>
                         <taskId>{$ctx:taskId}</taskId>
-                    </asana.deleteATask>
+                    </asana.deleteTask>
                 </case>
-                <case regex="urn:createACommentToTask">
-                    <asana.createACommentToTask>
+                <case regex="urn:createCommentToTask">
+                    <asana.createCommentToTask>
                         <taskId>{$ctx:taskId}</taskId>
                         <text>{$ctx:text}</text>
-                    </asana.createACommentToTask>
+                    </asana.createCommentToTask>
                 </case>
                 <case regex="urn:getAllStoriesOfTask">
                     <asana.getAllStoriesOfTask>
@@ -212,14 +212,14 @@
                         <followers>{$ctx:followers}</followers>
                     </asana.removeFollowersFromTask>
                 </case>
-                <case regex="urn:addATaskToProject">
-                    <asana.addATaskToProject>
+                <case regex="urn:addTaskToProject">
+                    <asana.addTaskToProject>
                         <taskId>{$ctx:taskId}</taskId>
                         <project>{$ctx:project}</project>
                         <insertAfter>{$ctx:insertAfter}</insertAfter>
                         <insertBefore>{$ctx:insertBefore}</insertBefore>
                         <section>{$ctx:section}</section>
-                    </asana.addATaskToProject>
+                    </asana.addTaskToProject>
                 </case>
                 <case regex="urn:getProjectTasks">
                     <asana.getProjectTasks>
@@ -231,33 +231,33 @@
                         <taskId>{$ctx:taskId}</taskId>
                     </asana.getProjectDetailsOfTask>
                 </case>
-                <case regex="urn:removeATaskFromProject">
-                    <asana.removeATaskFromProject>
+                <case regex="urn:removeTaskFromProject">
+                    <asana.removeTaskFromProject>
                         <taskId>{$ctx:taskId}</taskId>
                         <project>{$ctx:project}</project>
-                    </asana.removeATaskFromProject>
+                    </asana.removeTaskFromProject>
                 </case>
-                <case regex="urn:commentingOnAnObject">
-                    <asana.commentingOnAnObject>
+                <case regex="urn:commentOnObject">
+                    <asana.commentOnObject>
                         <taskId>{$ctx:taskId}</taskId>
                         <text>{$ctx:text}</text>
-                    </asana.commentingOnAnObject>
+                    </asana.commentOnObject>
                 </case>
                 <case regex="urn:getStoriesOnObject">
                     <asana.getStoriesOnObject>
                         <taskId>{$ctx:taskId}</taskId>
                     </asana.getStoriesOnObject>
                 </case>
-                <case regex="urn:getASingleStory">
-                    <asana.getASingleStory>
+                <case regex="urn:getSingleStory">
+                    <asana.getSingleStory>
                         <storyId>{$ctx:storyId}</storyId>
-                    </asana.getASingleStory>
+                    </asana.getSingleStory>
                 </case>
-                <case regex="urn:createATagToTask">
-                    <asana.createATagToTask>
+                <case regex="urn:createTagToTask">
+                    <asana.createTagToTask>
                         <taskId>{$ctx:taskId}</taskId>
                         <tag>{$ctx:tag}</tag>
-                    </asana.createATagToTask>
+                    </asana.createTagToTask>
                 </case>
                 <case regex="urn:getTagsOfTask">
                     <asana.getTagsOfTask>
@@ -269,11 +269,11 @@
                         <tagId>{$ctx:tagId}</tagId>
                     </asana.getTasksWithTag>
                 </case>
-                <case regex="urn:removeATagFromTask">
-                    <asana.removeATagFromTask>
+                <case regex="urn:removeTagFromTask">
+                    <asana.removeTagFromTask>
                         <taskId>{$ctx:taskId}</taskId>
                         <tag>{$ctx:tag}</tag>
-                    </asana.removeATagFromTask>
+                    </asana.removeTagFromTask>
                 </case>
                 <case regex="urn:query">
                     <asana.query>
@@ -286,16 +286,16 @@
                 <case regex="urn:getAllWorkspaces">
                     <asana.getAllWorkspaces/>
                 </case>
-                <case regex="urn:getAWorkspace">
-                    <asana.getAWorkspace>
+                <case regex="urn:getWorkspace">
+                    <asana.getWorkspace>
                         <workspace>{$ctx:workspace}</workspace>
-                    </asana.getAWorkspace>
+                    </asana.getWorkspace>
                 </case>
-                <case regex="urn:updateAWorkspace">
-                    <asana.updateAWorkspace>
+                <case regex="urn:updateWorkspace">
+                    <asana.updateWorkspace>
                         <workspace>{$ctx:workspace}</workspace>
                         <name>{$ctx:name}</name>
-                    </asana.updateAWorkspace>
+                    </asana.updateWorkspace>
                 </case>
                 <case regex="urn:addUser">
                     <asana.addUser>
@@ -316,10 +316,10 @@
                         <workspace>{$ctx:workspace}</workspace>
                     </asana.getAllUsers>
                 </case>
-                <case regex="urn:getASingleUser">
-                    <asana.getASingleUser>
+                <case regex="urn:getUser">
+                    <asana.getUser>
                         <userId>{$ctx:userId}</userId>
-                    </asana.getASingleUser>
+                    </asana.getUser>
                 </case>
                 <case regex="urn:getEventsOnResource">
                     <asana.getEventsOnResource>

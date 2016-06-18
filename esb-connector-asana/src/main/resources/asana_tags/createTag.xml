@@ -16,30 +16,39 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="updateAWorkspace">
-    <parameter name="workspace" description="Workspace id to be retrieved."/>
-    <parameter name="name" description="a String containing the name of the workspace"/>
+<template xmlns="http://ws.apache.org/ns/synapse" name="createTag">
+    <parameter name="name" description="The tag name."/>
+    <parameter name="workspace" description="The workspace Id."/>
     <sequence>
-        <property name="uri.var.workspace" expression="$func:workspace"/>
         <property name="uri.var.name" expression="$func:name"/>
+        <property name="uri.var.workspace" expression="$func:workspace"/>
         <payloadFactory media-type="json">
             <format>
                 {
                     "data":{
-                        "name":"$1"
+                        "workspace":"$1"
                     }
                 }
             </format>
             <args>
-                <arg evaluator="xml" expression="$func:name"/>
+                <arg evaluator="xml" expression="$func:workspace"/>
             </args>
         </payloadFactory>
+        <script language="js">
+            <![CDATA[
+		        var name = mc.getProperty('uri.var.name');
+		        var payload = mc.getPayloadJSON();
+                if (name != null && name != "") {
+                    payload.data.name = name;
+                }
+                mc.setPayloadJSON(payload);
+            ]]>
+        </script>
         <property name="messageType" value="application/json" scope="axis2"/>
-        <property name="Accept-Encoding" action="remove" scope="transport"/>
         <call>
             <endpoint>
-                <http method="put"
-                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/workspaces/{uri.var.workspace}"/>
+                <http method="POST"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tags"/>
             </endpoint>
         </call>
     </sequence>

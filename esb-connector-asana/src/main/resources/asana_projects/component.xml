@@ -18,12 +18,12 @@
 -->
 <component name="asana_projects" type="synapse/template">
     <subComponents>
-        <component name="createAProject">
-            <file>createAProject.xml</file>
+        <component name="createProject">
+            <file>createProject.xml</file>
             <description>Create a new project in asana</description>
         </component>
-        <component name="deleteAProject">
-            <file>deleteAProject.xml</file>
+        <component name="deleteProject">
+            <file>deleteProject.xml</file>
             <description>Delete a project in asana.</description>
         </component>
         <component name="getProjectSections">
@@ -42,8 +42,8 @@
             <file>queryForProjects.xml</file>
             <description>Request for projects</description>
         </component>
-        <component name="updateAProject">
-            <file>updateAProject.xml</file>
+        <component name="updateProject">
+            <file>updateProject.xml</file>
             <description>Updates an existing project</description>
         </component>
     </subComponents>

@@ -118,11 +118,11 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {createAProject} integration test.")
-    public void createAProjectMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createAProject");
+            description = "asana {createProject} integration test.")
+    public void createProjectMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createAProject_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createProject_mandatory.json");
         connectorProperties.setProperty("projectId",
                 esbRestResponse.getBody().getJSONObject("data").getString("id"));
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
@@ -137,11 +137,11 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {createAProject} integration test.")
-    public void createAProjectOptional() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createAProject");
+            description = "asana {createProject} integration test.")
+    public void createProjectOptional() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createAProject_optional.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createProject_optional.json");
         connectorProperties.setProperty("projectId2",
                 esbRestResponse.getBody().getJSONObject("data").getString("id"));
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
@@ -160,15 +160,15 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {createAProject} integration test.")
-    public void createAProjectNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createAProject");
+            description = "asana {createProject} integration test.")
+    public void createProjectNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createAProject_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createProject_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createAProjectOptional"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createProjectOptional"},
             description = "asana {getSingleProject} integration test.")
     public void getSingleProjectMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:getSingleProject");
@@ -199,11 +199,11 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"}, dependsOnMethods = {"getSingleProjectMandatory"},
-            description = "asana {updateAProject} integration test.")
-    public void updateAProjectMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:updateAProject");
+            description = "asana {updateProject} integration test.")
+    public void updateProjectMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:updateProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateAProject_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateProject_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/projects/" +
                 connectorProperties.getProperty("projectId2");
@@ -217,12 +217,12 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
                 apiRestResponse.getBody().getJSONObject("data").getString("name"));
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateAProjectMandatory"},
-            description = "asana {updateAProject} integration test.")
-    public void updateAProjectOptional() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:updateAProject");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateProjectMandatory"},
+            description = "asana {updateProject} integration test.")
+    public void updateProjectOptional() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:updateProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateAProject_optional.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateProject_optional.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/projects/" +
                 connectorProperties.getProperty("projectId2");
@@ -239,20 +239,20 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {updateAProject} integration test.")
-    public void updateAProjectNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:updateAProject");
+            description = "asana {updateProject} integration test.")
+    public void updateProjectNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:updateProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateAProject_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateProject_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createAProjectMandatory"},
-            description = "asana {deleteAProject} integration test.")
-    public void deleteAProjectMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:deleteAProject");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createProjectMandatory"},
+            description = "asana {deleteProject} integration test.")
+    public void deleteProjectMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:deleteProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteAProject_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteProject_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/projects/" +
                 connectorProperties.getProperty("projectId");
@@ -263,15 +263,15 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {deleteAProject} integration test.")
-    public void deleteAProjectNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:deleteAProject");
+            description = "asana {deleteProject} integration test.")
+    public void deleteProjectNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:deleteProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteAProject_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteProject_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createAProjectOptional"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createProjectOptional"},
             description = "asana {queryForProjects} integration test.")
     public void queryForProjectsMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:queryForProjects");
@@ -302,7 +302,7 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createAProjectOptional"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createProjectOptional"},
             description = "asana {getProjectSections} integration test.")
     public void getProjectSectionsMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:getProjectSections");
@@ -330,11 +330,11 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {createATag} integration test.")
-    public void createATagMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createATag");
+            description = "asana {createTag} integration test.")
+    public void createTagMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createTag");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createATag_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createTag_mandatory.json");
         connectorProperties.setProperty("tagId", esbRestResponse.getBody().getJSONObject("data").getString("id"));
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/tags/" +
@@ -349,12 +349,12 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
                 apiRestResponse.getBody().getJSONObject("data").get("created_at"));
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATagMandatory"},
-            description = "asana {createATag} integration test.")
-    public void createATagOptional() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createATag");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTagMandatory"},
+            description = "asana {createTag} integration test.")
+    public void createTagOptional() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createTag");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createATag_optional.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createTag_optional.json");
         connectorProperties.setProperty("tagId2", esbRestResponse.getBody().getJSONObject("data").getString("id"));
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/tags/" +
@@ -371,21 +371,21 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
                 apiRestResponse.getBody().getJSONObject("data").get("created_at"));
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATagOptional"},
-            description = "asana {createATag} integration test.")
-    public void createATagNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createATag");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTagOptional"},
+            description = "asana {createTag} integration test.")
+    public void createTagNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createTag");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createATag_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createTag_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"},dependsOnMethods = {"createATagNegative"},
-            description = "asana {getASingleTag} integration test.")
-    public void getASingleTagMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:getASingleTag");
+    @Test(groups = {"wso2.esb"},dependsOnMethods = {"createTagNegative"},
+            description = "asana {getSingleTag} integration test.")
+    public void getSingleTagMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:getSingleTag");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getASingleTag_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getSingleTag_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/tags/" +
                 connectorProperties.getProperty("tagId2");
@@ -402,20 +402,20 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {getASingleTag} integration test.")
-    public void getASingleTagNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:getASingleTag");
+            description = "asana {getSingleTag} integration test.")
+    public void getSingleTagNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:getSingleTag");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getASingleTag_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getSingleTag_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"getASingleTagNegative"},
-            description = "asana {updateATag} integration test.")
-    public void updateATagMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:updateATag");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"getSingleTagNegative"},
+            description = "asana {updateTag} integration test.")
+    public void updateTagMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:updateTag");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateATag_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateTag_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/tags/" +
                 connectorProperties.getProperty("tagId2");
@@ -426,16 +426,16 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
                 apiRestResponse.getBody().getJSONObject("data").get("name"));
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateATagMandatory"},
-            description = "asana {updateATag} integration test.")
-    public void updateATagNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:updateATag");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateTagMandatory"},
+            description = "asana {updateTag} integration test.")
+    public void updateTagNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:updateTag");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateATag_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateTag_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateATagNegative"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateTagNegative"},
             description = "asana {queryForTags} integration test.")
     public void queryForTagsMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:queryForTags");
@@ -467,11 +467,11 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"}, dependsOnMethods = {"queryForTagsNegative"},
-            description = "asana {createATask} integration test.")
-    public void createATaskMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createATask");
+            description = "asana {createTask} integration test.")
+    public void createTaskMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createATask_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createTask_mandatory.json");
         connectorProperties.setProperty("taskId",
                 esbRestResponse.getBody().getJSONObject("data").getString("id"));
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
@@ -487,12 +487,12 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
                 apiRestResponse.getBody().getJSONObject("data").get("created_at"));
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATaskMandatory"},
-            description = "asana {createATask} integration test.")
-    public void createATaskOptional() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createATask");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTaskMandatory"},
+            description = "asana {createTask} integration test.")
+    public void createTaskOptional() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createATask_optional.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createTask_optional.json");
         connectorProperties.setProperty("taskId2",
                 esbRestResponse.getBody().getJSONObject("data").getString("id"));
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
@@ -513,20 +513,20 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {createATask} integration test.")
-    public void createATaskNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createATask");
+            description = "asana {createTask} integration test.")
+    public void createTaskNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createATask_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createTask_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATaskOptional"},
-            description = "asana {getATask} integration test.")
-    public void getATaskMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:getATask");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTaskOptional"},
+            description = "asana {getTask} integration test.")
+    public void getTaskMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:getTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getATask_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getTask_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/tasks/" +
                 connectorProperties.getProperty("taskId");
@@ -542,20 +542,20 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {getATask} integration test.")
-    public void getATaskNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:getATask");
+            description = "asana {getTask} integration test.")
+    public void getTaskNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:getTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getATask_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getTask_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"getATaskMandatory"},
-            description = "asana {updateATask} integration test.")
-    public void updateATaskMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:updateATask");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"getTaskMandatory"},
+            description = "asana {updateTask} integration test.")
+    public void updateTaskMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:updateTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateATask_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateTask_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/tasks/" +
                 connectorProperties.getProperty("taskId");
@@ -567,12 +567,12 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
                 apiRestResponse.getBody().getJSONObject("data").getJSONObject("assignee").get("id"));
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateATaskMandatory"},
-            description = "asana {updateATask} integration test.")
-    public void updateATaskOptional() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:updateATask");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateTaskMandatory"},
+            description = "asana {updateTask} integration test.")
+    public void updateTaskOptional() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:updateTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateATask_optional.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateTask_optional.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/tasks/" +
                 connectorProperties.getProperty("taskId");
@@ -588,16 +588,16 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
                 apiRestResponse.getBody().getJSONObject("data").get("notes"));
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateATaskOptional"},
-            description = "asana {updateATask} integration test.")
-    public void updateATaskNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:updateATask");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateTaskOptional"},
+            description = "asana {updateTask} integration test.")
+    public void updateTaskNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:updateTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateATask_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateTask_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATaskOptional"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTaskOptional"},
             description = "asana {queryForTasks} integration test.")
     public void queryForTasksMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:queryForTasks");
@@ -651,12 +651,12 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATaskOptional"},
-            description = "asana {createASubtask} integration test.")
-    public void createASubtaskMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createASubtask");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTaskOptional"},
+            description = "asana {createSubtask} integration test.")
+    public void createSubtaskMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createSubtask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createASubtask_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createSubtask_mandatory.json");
         connectorProperties.setProperty("subtaskId", esbRestResponse.getBody().getJSONObject("data").getString("id"));
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/tasks/" +
@@ -670,12 +670,12 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
                 apiRestResponse.getBody().getJSONObject("data").get("created_at"));
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createASubtaskMandatory"},
-            description = "asana {createASubtask} integration test.")
-    public void createASubtaskOptional() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createASubtask");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createSubtaskMandatory"},
+            description = "asana {createSubtask} integration test.")
+    public void createSubtaskOptional() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createSubtask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createASubtask_optional.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createSubtask_optional.json");
         connectorProperties.setProperty("subtaskId2", esbRestResponse.getBody().getJSONObject("data").getString("id"));
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/tasks/" +
@@ -692,15 +692,15 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {createASubtask} integration test.")
-    public void createASubtaskNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createASubtask");
+            description = "asana {createSubtask} integration test.")
+    public void createSubtaskNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createSubtask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createASubtask_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createSubtask_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createASubtaskOptional"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createSubtaskOptional"},
             description = "asana {getAllSubtasks} integration test.")
     public void getAllSubtasksMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:getAllSubtasks");
@@ -731,7 +731,7 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateATaskNegative"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"updateTaskNegative"},
             description = "asana {changeParentOfTask} integration test.")
     public void changeParentOfTaskMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:changeParentOfTask");
@@ -760,10 +760,10 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"}, dependsOnMethods = {"changeParentOfTaskNegative"},
-            description = "asana {deleteATask} integration test.")
-    public void deleteATaskMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:deleteATask");
-        RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteATask_mandatory.json");
+            description = "asana {deleteTask} integration test.")
+    public void deleteTaskMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:deleteTask");
+        RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteTask_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/tasks/" + connectorProperties.getProperty("taskId");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
@@ -771,33 +771,33 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {deleteATask} integration test.")
-    public void deleteATaskNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:deleteATask");
+            description = "asana {deleteTask} integration test.")
+    public void deleteTaskNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:deleteTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteATask_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteTask_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATaskOptional"},
-            description = "asana {createACommentToTask} integration test.")
-    public void createACommentToTaskMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createACommentToTask");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTaskOptional"},
+            description = "asana {createCommentToTask} integration test.")
+    public void createCommentToTaskMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createCommentToTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createACommentToTask_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createCommentToTask_mandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 201);
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {createACommentToTask} integration test.")
-    public void createACommentToTaskNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createACommentToTask");
+            description = "asana {createCommentToTask} integration test.")
+    public void createCommentToTaskNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createCommentToTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createACommentToTask_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createCommentToTask_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATaskOptional"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTaskOptional"},
             description = "asana {getAllStoriesOfTask} integration test.")
     public void getAllStoriesOfTaskMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:getAllStoriesOfTask");
@@ -830,7 +830,7 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATaskOptional"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTaskOptional"},
             description = "asana {createFollowersToTask} integration test.")
     public void createFollowersToTaskMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:createFollowersToTask");
@@ -889,25 +889,25 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATaskOptional", "createAProjectOptional"},
-            description = "asana {addATaskToProject} integration test.")
-    public void addATaskToProjectMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:addATaskToProject");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTaskOptional", "createProjectOptional"},
+            description = "asana {addTaskToProject} integration test.")
+    public void addTaskToProjectMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:addTaskToProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_addATaskToProject_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_addTaskToProject_mandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {addATaskToProject} integration test.")
-    public void addATaskToProjectNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:addATaskToProject");
+            description = "asana {addTaskToProject} integration test.")
+    public void addTaskToProjectNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:addTaskToProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_addATaskToProject_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_addTaskToProject_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"addATaskToProjectMandatory"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"addTaskToProjectMandatory"},
             description = "asana {getProjectTasks} integration test.")
     public void getProjectTasksMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:getProjectTasks");
@@ -969,44 +969,44 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"addATaskToProjectMandatory"},
-            description = "asana {removeATaskFromProject} integration test.")
-    public void removeATaskFromProjectMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:removeATaskFromProject");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"addTaskToProjectMandatory"},
+            description = "asana {removeTaskFromProject} integration test.")
+    public void removeTaskFromProjectMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:removeTaskFromProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_removeATaskFromProject_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_removeTaskFromProject_mandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {removeATaskFromProject} integration test.")
+            description = "asana {removeTaskFromProject} integration test.")
     public void removeTheTaskFromProjectNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:removeATaskFromProject");
+        esbRequestHeadersMap.put("Action", "urn:removeTaskFromProject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_removeATaskFromProject_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_removeTaskFromProject_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATaskOptional"},
-            description = "asana {commentingOnAnObject} integration test.")
-    public void commentingOnAnObjectMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:commentingOnAnObject");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTaskOptional"},
+            description = "asana {commentOnObject} integration test.")
+    public void commentOnObjectMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:commentOnObject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_commentingOnAnObject_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_commentOnObject_mandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 201);
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {commentingOnAnObject} integration test.")
-    public void commentingOnAnObjectNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:commentingOnAnObject");
+            description = "asana {commentOnObject} integration test.")
+    public void commentOnObjectNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:commentOnObject");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_commentingOnAnObject_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_commentOnObject_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"commentingOnAnObjectMandatory"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"commentOnObjectMandatory"},
             description = "asana {getStoriesOnObject} integration test.")
     public void getStoriesOnObjectMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:getStoriesOnObject");
@@ -1040,11 +1040,11 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"}, dependsOnMethods = {"getStoriesOnObjectMandatory"},
-            description = "asana {getASingleStory} integration test.")
-    public void getASingleStoryMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:getASingleStory");
+            description = "asana {getSingleStory} integration test.")
+    public void getSingleStoryMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:getSingleStory");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getASingleStory_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getSingleStory_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/stories/" +
                 connectorProperties.getProperty("storyId");
@@ -1060,33 +1060,33 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {getASingleStory} integration test.")
-    public void getASingleStoryNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:getASingleStory");
+            description = "asana {getSingleStory} integration test.")
+    public void getSingleStoryNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:getSingleStory");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getASingleStory_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getSingleStory_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATaskOptional",},
-            description = "asana {createATagToTask} integration test.")
-    public void createATagToTaskMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createATagToTask");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTaskOptional",},
+            description = "asana {createTagToTask} integration test.")
+    public void createTagToTaskMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createTagToTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createATagToTask_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createTagToTask_mandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {createATagToTask} integration test.")
-    public void createATagToTaskNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:createATagToTask");
+            description = "asana {createTagToTask} integration test.")
+    public void createTagToTaskNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:createTagToTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createATagToTask_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createTagToTask_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createATagToTaskMandatory"},
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"createTagToTaskMandatory"},
             description = "asana {getTagsOfTask} integration test.")
     public void getTagsOfTaskMandatory() throws IOException, JSONException {
         esbRequestHeadersMap.put("Action", "urn:getTagsOfTask");
@@ -1149,20 +1149,20 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"}, dependsOnMethods = {"getTasksWithTagMandatory"},
-            description = "asana {removeATagFromTask} integration test.")
-    public void removeATagFromTaskMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:removeATagFromTask");
+            description = "asana {removeTagFromTask} integration test.")
+    public void removeTagFromTaskMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:removeTagFromTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_removeATagFromTask_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_removeTagFromTask_mandatory.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
     }
 
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"removeATagFromTaskMandatory"},
-            description = "asana {removeATagFromTask} integration test.")
-    public void removeATagFromTaskNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:removeATagFromTask");
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"removeTagFromTaskMandatory"},
+            description = "asana {removeTagFromTask} integration test.")
+    public void removeTagFromTaskNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:removeTagFromTask");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_removeATagFromTask_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_removeTagFromTask_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
@@ -1241,11 +1241,11 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {getAWorkspace} integration test.")
-    public void getAWorkspaceMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:getAWorkspace");
+            description = "asana {getWorkspace} integration test.")
+    public void getWorkspaceMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:getWorkspace");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getAWorkspace_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getWorkspace_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/workspaces/" +
                 connectorProperties.getProperty("workspace");
@@ -1260,20 +1260,20 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {getAWorkspace} integration test.")
-    public void getAWorkspaceNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:getAWorkspace");
+            description = "asana {getWorkspace} integration test.")
+    public void getWorkspaceNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:getWorkspace");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getAWorkspace_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getWorkspace_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {updateAWorkspace} integration test.")
-    public void updateAWorkspaceMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:updateAWorkspace");
+            description = "asana {updateWorkspace} integration test.")
+    public void updateWorkspaceMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:updateWorkspace");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateAWorkspace_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateWorkspace_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/workspaces/" +
                 connectorProperties.getProperty("workspace");
@@ -1288,11 +1288,11 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {updateAWorkspace} integration test.")
-    public void updateAWorkspaceNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:updateAWorkspace");
+            description = "asana {updateWorkspace} integration test.")
+    public void updateWorkspaceNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:updateWorkspace");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateAWorkspace_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateWorkspace_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 
@@ -1400,11 +1400,11 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"}, dependsOnMethods = {"getAllUsersMandatory"},
-            description = "asana {getASingleUser} integration test.")
-    public void getASingleUserMandatory() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:getASingleUser");
+            description = "asana {getUser} integration test.")
+    public void getUserMandatory() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:getUser");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getASingleUser_mandatory.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getUser_mandatory.json");
         String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" +
                 connectorProperties.getProperty("apiVersion") + "/users/" +
                 connectorProperties.getProperty("userId");
@@ -1421,11 +1421,11 @@ public class AsanaConnectorIntegrationTest extends ConnectorIntegrationTestBase 
     }
 
     @Test(groups = {"wso2.esb"},
-            description = "asana {getASingleUser} integration test.")
-    public void getASingleUserNegative() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:getASingleUser");
+            description = "asana {getUser} integration test.")
+    public void getUserNegative() throws IOException, JSONException {
+        esbRequestHeadersMap.put("Action", "urn:getUser");
         RestResponse<JSONObject> esbRestResponse =
-                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getASingleUser_negative.json");
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getUser_negative.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
     }
 }

@@ -18,78 +18,77 @@
 -->
 <component name="asana_tasks" type="synapse/template">
     <subComponents>
-        <component name="createATask">
-            <file>createATask.xml</file>
+        <component name="addTaskToProject">
+            <file>addTaskToProject.xml</file>
+            <description>Add a task to project in asana</description>
+        </component>
+        <component name="changeParentOfTask">
+            <file>changeParentOfTask.xml</file>
+            <description>Change the parent of task in asana</description>
+        </component>
+        <component name="createCommentToTask">
+            <file>createCommentToTask.xml</file>
+            <description>create a comment to the task in asana</description>
+        </component>
+        <component name="createFollowersToTask">
+            <file>createFollowersToTask.xml</file>
+            <description>create followers to task in asana</description>
+        </component>
+        <component name="createSubtask">
+            <file>createSubtask.xml</file>
+            <description>create a subtask in asana</description>
+        </component>
+        <component name="createTagToTask">
+            <file>createTagToTask.xml</file>
+            <description>Create a tag to task in asana</description>
+        </component>
+        <component name="createTask">
+            <file>createTask.xml</file>
             <description>create a new task</description>
         </component>
-        <component name="deleteATask">
-            <file>deleteATask.xml</file>
+        <component name="deleteTask">
+            <file>deleteTask.xml</file>
             <description>Delete a task</description>
         </component>
-        <component name="getATask">
-            <file>getATask.xml</file>
+        <component name="getAllStoriesOfTask">
+            <file>getAllStoriesOfTask.xml</file>
+            <description>get all stories of task in asana</description>
+        </component>
+        <component name="getProjectDetailsOfTask">
+            <file>getProjectDetailsOfTask.xml</file>
+            <description>Get the project delails of task is in asana</description>
+        </component>
+        <component name="getAllSubtasks">
+            <file>getAllSubtasks.xml</file>
+            <description>get all subtasks in asana</description>
+        </component>
+        <component name="getTagsOfTask">
+            <file>getTagsOfTask.xml</file>
+            <description>get task of task in asana</description>
+        </component>
+        <component name="getTask">
+            <file>getTask.xml</file>
             <description>get a task in asana</description>
         </component>
         <component name="queryForTasks">
             <file>queryForTasks.xml</file>
             <description>request for tasks</description>
         </component>
-        <component name="updateATask">
-            <file>updateATask.xml</file>
-            <description>Update a task</description>
-        </component>
-        <component name="getAllSubtasks">
-            <file>getAllSubtasks.xml</file>
-            <description>get all subtasks in asana</description>
-        </component>
-        <component name="createASubtask">
-            <file>createASubtask.xml</file>
-            <description>create a subtask in asana</description>
-        </component>
-        <component name="changeParentOfTask">
-            <file>changeParentOfTask.xml</file>
-            <description>Change the parent of task in asana</description>
-        </component>
-        <component name="getAllStoriesOfTask">
-            <file>getAllStoriesOfTask.xml</file>
-            <description>get all stories of task in asana</description>
-        </component>
-        <component name="createACommentToTask">
-            <file>createACommentToTask.xml</file>
-            <description>create a comment to the task in asana</description>
-        </component>
-        <component name="getProjectDetailsOfTask">
-            <file>getProjectDetailsOfTask.xml</file>
-            <description>Get the project delails of task is in asana</description>
-        </component>
-        <component name="addATaskToProject">
-            <file>addATaskToProject.xml</file>
-            <description>Add a task to project in asana</description>
-        </component>
-        <component name="removeATaskFromProject">
-            <file>removeATaskFromProject.xml</file>
-            <description>Remove the task from project in asana</description>
-        </component>
-        <component name="getTagsOfTask">
-            <file>getTagsOfTask.xml</file>
-            <description>get task of task in asana</description>
-        </component>
-        <component name="createATagToTask">
-            <file>createATagToTask.xml</file>
-            <description>Create a tag to task in asana</description>
-        </component>
-        <component name="removeATagFromTask">
-            <file>removeATagFromTask.xml</file>
-            <description>Remove a tag from task in asana</description>
-        </component>
-        <component name="createFollowersToTask">
-            <file>createFollowersToTask.xml</file>
-            <description>create followers to task in asana</description>
-        </component>
         <component name="removeFollowersFromTask">
             <file>removeFollowersFromTask.xml</file>
             <description>create followers to task in asana</description>
         </component>
-
+        <component name="removeTagFromTask">
+            <file>removeTagFromTask.xml</file>
+            <description>Remove a tag from task in asana</description>
+        </component>
+        <component name="removeTaskFromProject">
+            <file>removeTaskFromProject.xml</file>
+            <description>Remove the task from project in asana</description>
+        </component>
+        <component name="updateTask">
+            <file>updateTask.xml</file>
+            <description>Update a task</description>
+        </component>
     </subComponents>
 </component>

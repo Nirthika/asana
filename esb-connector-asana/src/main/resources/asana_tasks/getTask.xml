@@ -16,7 +16,7 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-<template name="getATask" xmlns="http://ws.apache.org/ns/synapse">
+<template name="getTask" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="taskId" description="Task id to be retrieved."/>
     <sequence>
         <property name="uri.var.taskId" expression="$func:taskId"/>

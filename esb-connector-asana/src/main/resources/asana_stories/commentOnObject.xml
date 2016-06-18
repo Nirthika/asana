@@ -16,14 +16,30 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="deleteATask">
-    <parameter name="taskId" description="Task id to be retrieved."/>
+<template xmlns="http://ws.apache.org/ns/synapse" name="commentOnObject">
+    <parameter name="taskId" description="a String containing the task id."/>
+    <parameter name="text" description="a String containing the comments."/>
     <sequence>
         <property name="uri.var.taskId" expression="$func:taskId"/>
+        <property name="uri.var.text" expression="$func:text"/>
+        <payloadFactory media-type="json">
+            <format>
+                {
+                    "data":{
+                        "text":"$1"
+                    }
+                }
+            </format>
+            <args>
+                <arg evaluator="xml" expression="$func:text"/>
+            </args>
+        </payloadFactory>
+        <property name="messageType" value="application/json" scope="axis2"/>
+        <property name="Accept-Encoding" action="remove" scope="transport"/>
         <call>
             <endpoint>
-                <http method="DELETE"
-                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}"/>
+                <http method="POST"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}/stories"/>
             </endpoint>
         </call>
     </sequence>

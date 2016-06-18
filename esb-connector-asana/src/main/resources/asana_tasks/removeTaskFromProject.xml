@@ -16,39 +16,29 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="createATag">
-    <parameter name="name" description="The tag name."/>
-    <parameter name="workspace" description="The workspace Id."/>
+<template xmlns="http://ws.apache.org/ns/synapse" name="removeTaskFromProject">
+    <parameter name="taskId" description="Task id to be retrieved."/>
+    <parameter name="project" description="The project to remove the task from."/>
     <sequence>
-        <property name="uri.var.name" expression="$func:name"/>
-        <property name="uri.var.workspace" expression="$func:workspace"/>
+        <property name="uri.var.taskId" expression="$func:taskId"/>
         <payloadFactory media-type="json">
             <format>
                 {
                     "data":{
-                        "workspace":"$1"
+                        "project":"$1"
                     }
                 }
             </format>
             <args>
-                <arg evaluator="xml" expression="$func:workspace"/>
+                <arg evaluator="xml" expression="$func:project"/>
             </args>
         </payloadFactory>
-        <script language="js">
-            <![CDATA[
-		        var name = mc.getProperty('uri.var.name');
-		        var payload = mc.getPayloadJSON();
-                if (name != null && name != "") {
-                    payload.data.name = name;
-                }
-                mc.setPayloadJSON(payload);
-            ]]>
-        </script>
         <property name="messageType" value="application/json" scope="axis2"/>
+        <property name="Accept-Encoding" action="remove" scope="transport"/>
         <call>
             <endpoint>
-                <http method="POST"
-                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tags"/>
+                <http method="post"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/tasks/{uri.var.taskId}/removeProject"/>
             </endpoint>
         </call>
     </sequence>

@@ -16,7 +16,7 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
 -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="addATaskToProject">
+<template xmlns="http://ws.apache.org/ns/synapse" name="addTaskToProject">
     <parameter name="taskId" description="Task id to be retrieved."/>
     <parameter name="project" description="a String containing the project of the task"/>
     <parameter name="insertAfter" description="task Id in the project ."/>
