@@ -26,9 +26,5 @@
             <file>getAllAttachments.xml</file>
             <description>get all asana attachments</description>
         </component>
-        <component name="uploadAttachment">
-            <file>uploadAttachment.xml</file>
-            <description>upload an asana attachment</description>
-        </component>
     </subComponents>
 </component>
